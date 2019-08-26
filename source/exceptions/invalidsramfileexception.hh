@@ -1,6 +1,6 @@
 /*
  * Secret of Evermore SRAM Editor
- * Copyright (C) 2006 emuWorks
+ * Copyright (C) 2006,2008 emuWorks
  * http://games.technoplaza.net/
  *
  * This file is part of Secret of Evermore SRAM Editor.
@@ -20,19 +20,23 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: invalidsramfileexception.hh,v 1.3 2006/09/02 16:24:45 technoplaza Exp $
+// $Id: invalidsramfileexception.hh,v 1.6 2008/01/24 01:18:03 technoplaza Exp $
 
-#ifndef _SOESRAME_INVALIDSRAMFILEEXCEPTION_HH_
-#define _SOESRAME_INVALIDSRAMFILEEXCEPTION_HH_
+#ifndef SOESRAME_INVALIDSRAMFILEEXCEPTION_HH_
+#define SOESRAME_INVALIDSRAMFILEEXCEPTION_HH_
 
 #include <stdexcept>
 
+/// namespace used by all soesrame classes and constants
 namespace soesrame {
     /// The possible InvalidSRAMFileException error codes
     enum isfe_error {
         ISFE_FILENOTFOUND, ISFE_INVALIDSIZE, ISFE_NOVALIDGAMES
     };
     
+    /**
+     * Exception thrown when a file is not a valid SRAM file.
+     */
     class InvalidSRAMFileException : public std::runtime_error {
     private:
         enum isfe_error error;

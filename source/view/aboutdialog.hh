@@ -20,9 +20,30 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: invalidsramfileexception.cc,v 1.3 2008/01/23 17:30:33 technoplaza Exp $
+// $Id: aboutdialog.hh,v 1.2 2008/01/24 01:18:03 technoplaza Exp $
 
-#include "exceptions/invalidsramfileexception.hh"
+#ifndef SOESRAME_ABOUTDIALOG_HH_
+#define SOESRAME_ABOUTDIALOG_HH_
 
-using namespace soesrame;
+#include "ui_aboutdialog.h"
+
+namespace soesrame {
+    /// custom about dialog to display credits and copyright
+    class AboutDialog : public QDialog {
+        Q_OBJECT
+        
+    private:
+        Ui::AboutDialog ui;
+        
+    public:
+        /**
+         * Creates a new AboutDialog.
+         *
+         * @param parent The parent Widget.
+         */
+        AboutDialog(QWidget *parent);
+    };
+}
+
+#endif
 

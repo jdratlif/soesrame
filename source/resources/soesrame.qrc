@@ -1,5 +1,14 @@
 <RCC>
-    <qresource prefix="/images" >
+    <qresource prefix="/images">
         <file>icon.png</file>
+    </qresource>
+    
+    <qresource prefix="/translations">
+        <file>soesrame_de.qm</file>
+        <file>soesrame_es.qm</file>
+        <file>soesrame_fr.qm</file>
+        <file>qt_de.qm</file>
+        <file>qt_es.qm</file>
+        <file>qt_fr.qm</file>
     </qresource>
 </RCC>

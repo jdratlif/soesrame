@@ -1,6 +1,6 @@
 ################################################################################
 # Secret of Evermore SRAM Editor
-# Copyright (C) 2006 emuWorks
+# Copyright (C) 2006,2008 emuWorks
 # http://games.technoplaza.net/
 #
 # This file is part of Secret of Evermore SRAM Editor.
@@ -25,6 +25,11 @@ TARGET +=
 DEPENDPATH += .
 INCLUDEPATH += .
 QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.3
+CONFIG += x86 ppc
+
+TRANSLATIONS = resources/soesrame_de.ts \
+	resources/soesrame_es.ts \
+	resources/soesrame_fr.ts
 
 RESOURCES += resources/soesrame.qrc
 RC_FILE = resources/windows.rc
@@ -32,11 +37,11 @@ RC_FILE = resources/windows.rc
 SOURCES += soesrame.cc \
 	exceptions/invalidsramfileexception.cc \
 	model/sramfile.cc \
-	view/mainwindow.cc
+	view/aboutdialog.cc view/mainwindow.cc
 	
 HEADERS += exceptions/invalidsramfileexception.hh \
 	model/sramfile.hh \
-	view/mainwindow.hh
+	view/aboutdialog.hh view/mainwindow.hh
 
-FORMS += view/mainwindow.ui
+FORMS += view/aboutdialog.ui view/mainwindow.ui
 

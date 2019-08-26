@@ -1,11 +1,11 @@
 -------------------------------------------------------------------------------
-| Secret of Evermore SRAM Document 1.0
+| Secret of Evermore SRAM Document 1.1
 | by John David Ratliff
 |
 | The most recent version of this guide can always be found at
 | http://games.technoplaza.net/soesrame/sram-doc.txt
 |
-| Copyright (C) 2006 emuWorks (http://games.technoplaza.net/)
+| Copyright (C) 2006,2008 emuWorks (http://games.technoplaza.net/)
 |   Permission is granted to copy, distribute and/or modify this document
 |   under the terms of the GNU Free Documentation License, Version 1.2
 |   or any later version published by the Free Software Foundation;
@@ -37,8 +37,8 @@
   memory in the Secret of Evermore cartridge used to save your progress.
   
   SNES emulators create a special file to store this memory. These are known as
-  SRAM files and generally have a .srm extention (ZSNES and Snes9x both use the
-  .srm extention).
+  SRAM files and generally have a .srm extention (ZSNES and Snes9x both use this
+  extension).
   
   This guide will describe the SRAM, what it stores and where, and how to edit
   it to change your save games. For a program that edits the SRAM, see section
@@ -57,7 +57,7 @@
   
   Save state editors/documents are more popular than SRAM editors/documents
   because they are easier to change. Because the SRAM employs a battery to
-  keep the data, and the battery eventually diea, SRAM files need to be sanity
+  keep the data, and the battery eventually dies, SRAM files need to be sanity
   checked to see if the battery is still functioning. This leads to extra
   information stored in the SRAM that is used to test the validity of the data.
   When you edit SRAM files, you must also correct this sanity data, or the game
@@ -68,7 +68,8 @@
 | 2.0 Copyright Notice
 -------------------------------------------------------------------------------
 
-  This document is Copyright (C) 2006 emuWorks (http://games.technoplaza.net/) 
+  This document is Copyright (C) 2006,2008 emuWorks
+                   (http://games.technoplaza.net/) 
     Permission is granted to copy, distribute and/or modify this document
     under the terms of the GNU Free Documentation License, Version 1.2
     or any later version published by the Free Software Foundation;
@@ -84,6 +85,13 @@
 | 3.0 Revision History
 -------------------------------------------------------------------------------
 
+  Version 1.1 - Friday, January 25, 2008
+    - Minor typos fixed
+    - Updated name alphabet information for non-English versions.
+    - Added missing Dog's Experience offset.
+    - Updated checksum information for European versions.
+    - Updated sanity program for European versions.
+    
   Version 1.0 - Sunday, September 10, 2006
     - First Public Release
     
@@ -109,7 +117,7 @@
   location, and the rare quest items.
   
   Here is a short listing of what is known in no particular order. The sanity
-  (aka checksum) data, the known alchemys and their levels, the boy's and dog's
+  (aka checksum) data, the known alchemies and their levels, the boy and dog's
   stats (name, experience, level, hp, and mp), the money (talons, jewels, gold
   coins, and credits), and the inventory (alchemy ingredients, items, armors,
   weapons, helmets, gauntlets, collars, trade goods, and charms).
@@ -134,7 +142,7 @@
   Data in the SRAM is stored in little endian format, the format used by the
   SNES processor. This means words are stored with their least significant byte
   first. For instance, 400 is 0x190 in hex, which is two bytes 0x01 and 0x90.
-  In little endian, this would be 0x9001 [90 01]. Mostly, this just means
+  In little endian, this would be 0x9001 [90 01]. Mainly, this just means
   reverse the bytes. There are plenty of endian guides on the web if you need a
   more in-depth explanation.
   
@@ -156,6 +164,7 @@
     0xDE (level)
     0xAF (current HP, 2 bytes)
     0xCF (max HP, 2 bytes)
+    0xDB (experience, 3 bytes)
   ----------------------------------------------------
   
   The boy and dog's names have storage space for 34 characters (null
@@ -168,11 +177,34 @@
   & (ampersand), # (pound), and   (space). This is the alphabet the game limits
   you to using. Using characters outside this alphabet is untested.
   
+  The German and Spanish versions have slightly different alphabets for the
+  names. In the Spanish version, # is replaced by the ñ. It is encoded in the
+  name with the value 0xD7, not the unicode value 0x00F1.
+  
+  In the German version, the numbers 0, and 4-9 are replaced by the capital
+  and lower case vowels with umlauts and the eszett ß character. Their values
+  are encoded as follows:
+  
+  -----------------
+   A umlaut = 0xCB
+   O umlaut = 0xDB
+   U umlaut = 0xDF
+   a umlaut = 0xE3
+   o umlaut = 0xEF
+   u umlaut = 0xF3
+   eszett   = 0xC6
+  -----------------
+  
   The byte immediately after the character's name must be the null
   terminator (00). If there is no terminator, the game will crash on load.
   
-  The valid range for levels are 1-99. The valid range for hp is 0-999, though
-  the max should probably be at least 1.
+  The valid range for levels are 1-99. The valid range for hp is 0-999. Setting
+  levels above what your experience calls for is untested, as it setting a
+  current HP above your max HP.
+  
+  The character's max HP is tied to their level. If you change it, the game
+  will change it back as soon as you get hit or leave your current area. It is
+  therefore pointless to edit this value.
   
   The valid range for experience is 0-7562471. The high value is the dog's
   level 99 experience. Anything more than that is pointless.
@@ -191,10 +223,10 @@
   The next offsets are for the weapon inventory. There is a single bit for each
   weapon. The first value is the offset in the SRAM, and the second is the bit
   that controls it. A set bit (1) means you have the weapon, and a clear bit
-  means you do not have it.
+  (0) means you do not have it.
   
-  Bit number start at 0 and go through 7 and run right to left. For example, in
-  the byte with bit pattern 10010010, bit 0 is clear and bit 7 is set.
+  Bit numbers start at 0 and go through 7 and run right to left. For example,
+  in the byte with bit pattern 10010010, bit 0 is clear and bit 7 is set.
   
   ----------------------------------------------------
   0x279 bit 1 (Bone Crusher)
@@ -221,7 +253,7 @@
   
   The minor level ranges from 0-255. The status screen only shows values from
   0-99. To convert between the actual value and the shown value, just divide
-  the minor level by 2.56 and ignore the decimal places.
+  the minor level by 2.56 and drop the decimal places.
   
   ----------------------------------------------------
   0x116 0x115 (Bone Crusher)
@@ -243,7 +275,7 @@
   ----------------------------------------------------
   
   The next set of offsets are for the alchemy ingredients. Their valid range is
-  from 0-99.
+  from 0-99. Using higher values is untested.
   
   ----------------------------------------------------
   0x289 (Wax)
@@ -362,11 +394,12 @@
   ----------------------------------------------------
   
   The next offsets are for the inventory items, which include the common
-  items, equipment, and tradge goods. In other words, anything that can be
+  items, equipment, and trade goods. In other words, anything that can be
   bought, sold, or traded.
   
   Most items have a valid range of 0-6, but a few can be up to 99. These
-  include call beads, bazooka ammunition, and all the trade goods.
+  include call beads, bazooka ammunition, and all the trade goods. Using higher
+  values is untested.
   
   ----------------------------------------------------
   0x29F (Petal)
@@ -475,8 +508,8 @@
   ensure the SRAM is still being saved by the battery. This section describes
   that algorithm.
   
-  The following is the actual algorithm, obtained using Geiger's Snes9x
-  debugger. I have commented each line.
+  The following is the actual algorithm in the US version, obtained using
+  Geiger's Snes9x debugger. I have commented each line.
   
   ---------------------------------------------------------------------
   $8D/B469 A0 2F 03    LDY #$032F             ; load 0x32F into counter
@@ -517,46 +550,13 @@
   ignored due to the shift that always occurs following the next iteration of
   the loop.
   
-  Here is the C++ routine from soesrame I wrote (based on C source from
-  phonymike).
-  
-  --------------------------------------------------------------------------
-  quint16 SRAMFile::checksum(int game) const {
-    quint32 checksum = 0x43F;
-    unsigned char temp = checksum +
-                         sram[SRAM_GAME_OFFSET + 2 + game * SRAM_GAME_SIZE];
-    
-    for (int i = 3; i < SRAM_GAME_SIZE; ++i) {
-        checksum &= 0xFF00;
-        checksum |= temp;
-        checksum <<= 1;
-        
-        if (checksum > 0xFFFF) {
-            checksum -= 0xFFFF;
-        }
-        
-        temp = checksum + sram[SRAM_GAME_OFFSET + i + game * SRAM_GAME_SIZE];
-    }
-    
-    return static_cast<quint16>(checksum);
-  }
-  --------------------------------------------------------------------------
-  
-  To clear up any confusion, a quint16 is a 16-bit unsigned integer and a
-  quint32 is an unsigned 32-bit integer. These are types defined by the Qt
-  library which is used by soesrame.
+  In the European versions, the algorithm is only slightly different. Change
+  the initial value 0x43F to 0x16FF. This is the only difference.
   
   When you edit the SRAM by hand, the checksum will be wrong. To get around
-  this, you can either fix the checksum, or have the game skip the sanity
-  check.
-  
-  The latter can be accomplished by using a game gene code. DDA4-17E1 will do
-  this.
-  
-  If you don't have a game genie (either because you're using an emulator that
-  doesn't support game genie codes, or because you're using a game copier on a
-  real SNES), then you will need to compute the checksum and fix the SRAM
-  sanity data for the game.
+  this, you will need to fix the checksum. If you try to skip the sanity check
+  with a game genie code, and have invalid game data in any of the four slots,
+  the game is quite likely to crash.
   
   The following is a listing for a C program which will fix the sanity data for
   an SRAM file.
@@ -564,7 +564,7 @@
 -------------------------------- soe-sanity.c ---------------------------------
 /*
  * Secret of Evermore Sanity Fixer
- * Copyright (C) 2006 emuWorks
+ * Copyright (C) 2006,2008 emuWorks
  * http://games.technoplaza.net/
  *
  * This program is free software; you can redistribute it and/or
@@ -581,8 +581,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
- 
+
 #include <stdio.h>
+#include <string.h>
 
 // define this at compile time on big endian systems (i.e. PPC Mac's)
 #ifdef BYTE_ORDER_BIGENDIAN
@@ -591,9 +592,13 @@
     #define SWAP_ON_BIGENDIAN(w) (w)
 #endif
 
-static void fix_game(unsigned char *sram, int game) {
+struct options {
+    int game, version;
+    const char *filename;
+};
+
+static void fix_game(unsigned char *sram, int game, unsigned long checksum) {
     unsigned short *offset = (unsigned short *)(sram + 2 + (game * 0x331));
-    unsigned long checksum = 0x43F;
     unsigned char temp = checksum + sram[4 + (game * 0x331)];
     int i;
     
@@ -602,38 +607,55 @@ static void fix_game(unsigned char *sram, int game) {
         checksum |= temp;
         checksum <<= 1;
         
-        if (checksum > 0xFFFF)
-            checksum -= 0xFFFF;
-        
+        if (checksum > 0xFFFF) checksum -= 0xFFFF;
         temp = checksum + sram[2 + i + (game * 0x331)];
     }
     
     *offset = SWAP_ON_BIGENDIAN(checksum);
+}
+
+static void parse_command_line(int argc, char **argv, struct options *opts) {
+    int i;
     
-    printf("fixed checksum for game %d\n", (game + 1));
+    opts->filename = argv[1];
+    opts->game = 1;
+    opts->version = 0;
+    
+    for (i = 1; i < argc; ++i) {
+        if (strcmp(argv[i], "--game") == 0) {
+            if (++i < argc) {
+                switch (*argv[i]) {
+                    case '2': opts->game = 2; break;
+                    case '3': opts->game = 3; break;
+                    case '4': opts->game = 4; break;
+                    default: opts->game = 1;
+                }
+            }
+        } else if (strcmp(argv[i], "--version") == 0) {
+            if (++i < argc) {
+                if (strcmp(argv[i], "europe") == 0) opts->version = 1;
+                else opts->version = 0;
+            }
+        } else {
+            opts->filename = argv[i];
+        }
+    }
 }
 
 int main(int argc, char **argv) {
     FILE *f;
-    int fix_mask = 0xF, i;
+    struct options opts;
     char sram[0x2000];
     
-    if ((argc != 2) && (argc != 3)) {
-        fprintf(stderr, "syntax: soe-sanity sram-file.srm [ game (1 - 4) ]\n");
+    if (argc < 3) {
+        fprintf(stderr, "syntax: soe-sanity sram-file.srm "
+                        "[ --game 1-4 ] [ --version us | europe ]\n");
         return -1;
     }
     
-    if (argc == 3) {
-        switch (*argv[2]) {
-            case '1': fix_mask = 0x1; break;
-            case '2': fix_mask = 0x2; break;
-            case '3': fix_mask = 0x4; break;
-            case '4': fix_mask = 0x8; break;
-            default: break; // ignore third argument if invalid
-        }
-    }
+    parse_command_line(argc, argv, &opts);
     
-    if ((f = fopen(argv[1], "rb")) == NULL) {
+    if ((f = fopen(opts.filename, "rb")) == NULL) {
         fprintf(stderr, "error: unable to open SRAM file '%s'\n", argv[1]);
         return -1;
     }
@@ -654,13 +676,9 @@ int main(int argc, char **argv) {
     
     fclose(f);
     
-    for (i = 0; i < 4; ++i) {
-        if (fix_mask & (1 << i)) {
-            fix_game(sram, i);
-        }
-    }
+    fix_game(sram, (opts.game - 1), ((opts.version == 0) ? 0x43F : 0x16FF));
     
-    if ((f = fopen(argv[1], "wb")) == NULL) {
+    if ((f = fopen(opts.filename, "wb")) == NULL) {
         fprintf(stderr, "error: unable to open SRAM file '%s'\n", argv[1]);
         return -1;
     }
@@ -671,6 +689,9 @@ int main(int argc, char **argv) {
     }
     
     fclose(f);
+    
+    printf("fixed checksum for game %d in file %s (%s version)\n",
+        opts.game, opts.filename, ((opts.version == 0) ? "us" : "european"));
     
     return 0;
 }
@@ -691,22 +712,21 @@ int main(int argc, char **argv) {
   
   gcc -DBYTE_ORDER_BIGENDIAN -o soe-sanity soe-sanity.c
   
-  Will buile the program using gcc on a big endian machine. I don't have much
+  Will build the program using gcc on a big endian machine. I don't have much
   experience with compilers other than gcc, so you'll have to figure it out
   yourself if you're using something else.
   
-  Using the program should be simple. Just pass it the name of an SoE SRAM file
-  and it will fix the checksums for all the games automatically. If you only
-  want to fix one game's checksum, just pass the game number (1-4) as the
-  second argument. This is useful when you don't have four save games, as the
-  game might crash if the data in the other games isn't valid.
+  The program has a simple interface. Specify the sram filename, the game that
+  needs fixing, and the version of the game (us or europe). It defaults to game
+  1 and the US version.
   
   Examples:
     soe-sanity "Secret of Evermore (U).srm"
-    soe-sanity soe.srm 1
+    soe-sanity "Secret of Evermore (G).srm" --game 2 --version europe
     
-  The first one fixes all the checksums in Secret of Evermore (U).srm. The
-  second one fixes just the first game in soe.srm.
+  The first one fixes the checksum for the first game using the US algorithm.
+  The second one fixes the checksum for the second game using the European
+  algorithm.
   
 -------------------------------------------------------------------------------
 | 5.0 soesrame - Secret of Evermore SRAM Editor

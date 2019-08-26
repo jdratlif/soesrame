@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
-| Secret of Evermore SRAM Editor 0.92
-| Copyright (C) 2006 emuWorks
+| Secret of Evermore SRAM Editor 0.93
+| Copyright (C) 2006,2008 emuWorks
 | http://games.technoplaza.net/
 --------------------------------------------------------------------------------
 
@@ -23,8 +23,8 @@
 | 1.0 Introduction
 --------------------------------------------------------------------------------
 
-  The Secret of Evermore SRAM Editor, or soesrame (soh-ez-ra-muh) for short, is
-  a tool for editing Secret of Evermore save game files.
+  The Secret of Evermore SRAM Editor, or soesrame for short, is a tool for
+  editing Secret of Evermore save game files.
   
   The game's own method for saving games was to used a battery backed portion
   of RAM commonly referred to as SRAM (save RAM). Emulators such as ZSNES and
@@ -53,15 +53,45 @@
     
   It will be named the same as your ROM, but with an .srm extention. For
   example: Secret of Evermore (U).srm. The binary versions of the program
-  include a sample srm file. The sample SRM file has two save games. The game in
-  slot 2 is a brand new game where the player was killed by the raptors and
-  taken to Fire Eye's village. The game in slot 1 is a copy of that game, but
-  edited with soesrame to give some big starting benefits to the player.
+  include a sample srm file.
   
-  When you first start the program, you can either drop the SRAM file onto the
-  window, or choose open from the file menu and search for it. Assuming you
-  opened a valid SRAM file, the program will display several controls that you
-  can then use to edit the games.
+  There are five known versions of the game. The original United States version
+  in English, and four European versions in English, French, German, and
+  Spanish. soesrame is designed to edit SRAM files from any of these five
+  versions. If you are editing a version outside your region (for example, if
+  you live in France and want to edit games from the US version), then you will
+  need to select the country from the Region menu prior to opening the
+  SRAM. If you don't do this, the program may not find any games, or may
+  interpret the data incorrectly.
+  
+  soesrame has been translated into French, German, and Spanish. The program
+  will be automatically translated if your computer's language is set. Consult
+  your operating system documentation for information on changing your
+  computer's language setting.
+  
+  To force a language change, you can launch soesrame from the command line.
+  In Windows, from cmd.exe
+  
+  set LANG=XX
+  soesrame
+  
+  Replace XX with en (English), fr (French), de (German), or es (Spanish).
+  
+  In Linux from a bourne/korn shell (sh, bash, ksh),
+  
+  export LANG=XX
+  ./soesrame
+  
+  or from a C shell (csh, tcsh)
+  
+  setenv LANG=XX
+  ./soesrame
+  
+  Replace XX with en (English), fr (French), de (German), and es (Spanish).
+  
+  To open the SRAM, you can either drop the SRAM file onto the window, or choose
+  open from the file menu and search for it. Assuming you opened a valid SRAM
+  file, the program will display controls that you can use to edit the games.
   
   By default, the first valid game in the SRAM is opened. You can change this
   from the game menu.
@@ -81,20 +111,27 @@
   Qt/4 and an ISO C++ compiler, but any platform that has those things should
   work. We provide support for Windows, Linux, and Mac OS X.
   
-  To compile the source code, you will need Qt/4 and an ISO C++ compiler. We
-  recommend using Qt 4.1 and g++ 3.3 or higher. You can get the opensource
-  version of Qt/4 from http://www.trolltech.com/qt/.
+  To compile the source code, you will need Qt and an ISO C++ compiler. Qt
+  version 4.2 or higher is required. You can get the opensource version of Qt
+  from http://www.trolltech.com/qt/.
   
-  Directions for compiling:
+  Basic directions for compiling:
     cd source
     qmake
-    make (or nmake for Microsoft compilers)
+    lrelease soesrame.pro
+    make
     
   Feel free to contact us if you have trouble building the source.
   
 --------------------------------------------------------------------------------
 | 4.0 Revision History
 --------------------------------------------------------------------------------
+
+  Version 0.93 (January 27, 2008)
+    - Removed Max HP modifiers
+    - Translated program into French, German, and Spanish
+    - Now works with European versions
+    - Fixed bug that allowed invalid games to be selected
 
   Version 0.92 (September 10, 2006)
     - Added SRAM document
@@ -121,6 +158,9 @@
   
   Thanks to Geiger and the Snes9x team for their combined work on Geiger's
   Snes9x debugger which was used to find the SRAM offsets.
+  
+  Thanks to all the people who did translation work for me: James, creaothceann,
+  corronchilejano, and Neo Kaiser.
 
 --------------------------------------------------------------------------------
 | 5.2 Known Issues

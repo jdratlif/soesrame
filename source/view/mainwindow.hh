@@ -1,6 +1,6 @@
 /*
  * Secret of Evermore SRAM Editor
- * Copyright (C) 2006 emuWorks
+ * Copyright (C) 2006,2008 emuWorks
  * http://games.technoplaza.net/
  *
  * This file is part of Secret of Evermore SRAM Editor.
@@ -20,16 +20,19 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: mainwindow.hh,v 1.16 2006/09/02 19:49:22 technoplaza Exp $
+// $Id: mainwindow.hh,v 1.23 2008/01/24 01:18:03 technoplaza Exp $
 
-#ifndef _SOESRAME_MAINWINDOW_HH_
-#define _SOESRAME_MAINWINDOW_HH_
+#ifndef SOESRAME_MAINWINDOW_HH_
+#define SOESRAME_MAINWINDOW_HH_
 
 #include "ui_mainwindow.h"
 
 #include "model/sramfile.hh"
 
 namespace soesrame {
+    class AboutDialog;
+    
+    /// the main display window
     class MainWindow : public QMainWindow {
         Q_OBJECT
         
@@ -37,6 +40,8 @@ namespace soesrame {
         QString *sramFile;
         Ui::MainWindow ui;
         SRAMFile *sram;
+        AboutDialog *aboutDialog;
+        enum sf_region region;
         bool ignoreSignals, open;
         
         /**
@@ -115,6 +120,13 @@ namespace soesrame {
          * @param text The amount.
          */
         void setMoney(enum sf_money money, const QString &text);
+        
+        /**
+         * Sets the region of the game to edit.
+         *
+         * @param region The new region.
+         */
+        void setRegion(enum sf_region region);
         
         /**
          * Sets the amount of one of the trade goods.
@@ -362,13 +374,6 @@ namespace soesrame {
          * @param text The new text.
          */
         void on_boyLevelText_textEdited(const QString &text);
-        
-        /**
-         * Called when the boy's max HP is edited.
-         *
-         * @param text The new text.
-         */
-        void on_boyMaxHPText_textEdited(const QString &text);
         
         /**
          * Called when the boy's name is edited.
@@ -726,13 +731,6 @@ namespace soesrame {
          * @param text The new text.
          */
         void on_dogLevelText_textEdited(const QString &text);
-        
-        /**
-         * Called when the dog's max HP is edited.
-         *
-         * @param text The new text.
-         */
-        void on_dogMaxHPText_textEdited(const QString &text);
         
         /**
          * Called when the dog's name is edited.
@@ -1629,6 +1627,41 @@ namespace soesrame {
          * @param text The new value.
          */
         void on_reflectText_textEdited(const QString &text);
+        
+        /**
+         * Called when England is selected from the Region menu.
+         *
+         * @param checked Unused.
+         */
+        void on_regionEngland_triggered(bool checked);
+        
+        /**
+         * Called when France is selected from the Region menu.
+         *
+         * @param checked Unused.
+         */
+        void on_regionFrance_triggered(bool checked);
+        
+        /**
+         * Called when Germany is selected from the Region menu.
+         *
+         * @param checked Unused.
+         */
+        void on_regionGermany_triggered(bool checked);
+        
+        /**
+         * Called when Spain is selected from the Region menu.
+         *
+         * @param checked Unused.
+         */
+        void on_regionSpain_triggered(bool checked);
+        
+        /**
+         * Called when United States is selected from the Region menu.
+         *
+         * @param checked Unused.
+         */
+        void on_regionUnitedStates_triggered(bool checked);
         
         /**
          * Called when the regrowth alchemy is given or taken away.
@@ -2549,6 +2582,17 @@ namespace soesrame {
         { setAlchemyLevelMajor(SF_REFLECT, value); }
     inline void MainWindow::on_reflectText_textEdited(const QString &text)
         { setAlchemyLevelMinor(SF_REFLECT, text); }
+        
+    inline void MainWindow::on_regionEngland_triggered(bool)
+        { setRegion(REGION_ENGLAND); }
+    inline void MainWindow::on_regionFrance_triggered(bool)
+        { setRegion(REGION_FRANCE); }
+    inline void MainWindow::on_regionGermany_triggered(bool)
+        { setRegion(REGION_GERMANY); }
+    inline void MainWindow::on_regionSpain_triggered(bool)
+        { setRegion(REGION_SPAIN); }
+    inline void MainWindow::on_regionUnitedStates_triggered(bool)
+        { setRegion(REGION_UNITEDSTATES); }
     
     inline void MainWindow::on_regrowthCheck_stateChanged(int state)
         { setAlchemy(SF_REGROWTH, state); }

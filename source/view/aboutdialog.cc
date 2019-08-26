@@ -20,9 +20,15 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: invalidsramfileexception.cc,v 1.3 2008/01/23 17:30:33 technoplaza Exp $
+// $Id: aboutdialog.cc,v 1.1 2008/01/23 21:30:18 technoplaza Exp $
 
-#include "exceptions/invalidsramfileexception.hh"
+#include "view/aboutdialog.hh"
 
 using namespace soesrame;
+
+AboutDialog::AboutDialog(QWidget *parent) : QDialog(parent) {
+    ui.setupUi(this);
+    
+    connect(ui.buttonBox, SIGNAL(accepted()), this, SLOT(hide()));
+}
 

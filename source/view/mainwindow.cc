@@ -1,6 +1,6 @@
 /*
  * Secret of Evermore SRAM Editor
- * Copyright (C) 2006 emuWorks
+ * Copyright (C) 2006,2008 emuWorks
  * http://games.technoplaza.net/
  *
  * This file is part of Secret of Evermore SRAM Editor.
@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: mainwindow.cc,v 1.20 2006/09/10 05:08:26 technoplaza Exp $
+// $Id: mainwindow.cc,v 1.29 2008/01/26 16:40:51 technoplaza Exp $
 
 #include <cmath>
 
@@ -33,11 +33,13 @@
 #include <QRegExpValidator>
 #include <QUrl>
 
+#include "view/aboutdialog.hh"
 #include "view/mainwindow.hh"
 
 using namespace soesrame;
 
-MainWindow::MainWindow() : QMainWindow(), ignoreSignals(false), open(false) {
+MainWindow::MainWindow() : QMainWindow(), aboutDialog(0),
+                           ignoreSignals(false), open(false) {
     // setup widgets
     ui.setupUi(this);
     
@@ -54,19 +56,54 @@ MainWindow::MainWindow() : QMainWindow(), ignoreSignals(false), open(false) {
     gameActionGroup->addAction(ui.gameGame4);
     gameActionGroup->setExclusive(true);
     
+    QActionGroup *regionActionGroup = new QActionGroup(this);
+    regionActionGroup->addAction(ui.regionUnitedStates);
+    regionActionGroup->addAction(ui.regionEngland);
+    regionActionGroup->addAction(ui.regionFrance);
+    regionActionGroup->addAction(ui.regionGermany);
+    regionActionGroup->addAction(ui.regionSpain);
+    regionActionGroup->setExclusive(true);
+    
+    // take a guess at the proper region
+    switch (QLocale::system().language()) {
+        case QLocale::Spanish:
+            setRegion(REGION_SPAIN);
+            ui.regionSpain->setChecked(true);
+            break;
+            
+        case QLocale::German:
+            setRegion(REGION_GERMANY);
+            ui.regionGermany->setChecked(true);
+            break;
+            
+        case QLocale::French:
+            setRegion(REGION_FRANCE);
+            ui.regionFrance->setChecked(true);
+            break;
+            
+        case QLocale::English:
+        case QLocale::C:
+            if (QLocale::system().country() == QLocale::UnitedKingdom) {
+                setRegion(REGION_ENGLAND);
+                ui.regionEngland->setChecked(true);
+            } else {
+                setRegion(REGION_UNITEDSTATES);
+            }
+            break;
+            
+        default:
+            // default to English European Version
+            setRegion(REGION_ENGLAND);
+            ui.regionEngland->setChecked(true);
+    }
+    
     // setup validators
-    QRegExpValidator *nameValidator =
-        new QRegExpValidator(QRegExp("[A-Za-z0-9,.!'\\-&# ]*"), this);
     QIntValidator *under6Validator = new QIntValidator(0, 6, this);
     QIntValidator *under100Validator = new QIntValidator(0, 99, this);
     QIntValidator *under1000Validator = new QIntValidator(0, 999, this);
     QIntValidator *any24BitValidator = new QIntValidator(0, 16777215, this);
     QIntValidator *levelValidator = new QIntValidator(1, 99, this);
     QIntValidator *weaponLevelValidator = new QIntValidator(0, 255, this);
-    
-    // name validators
-    ui.boyNameText->setValidator(nameValidator);
-    ui.dogNameText->setValidator(nameValidator);
     
     // money validators
     ui.talonsText->setValidator(any24BitValidator);
@@ -77,12 +114,10 @@ MainWindow::MainWindow() : QMainWindow(), ignoreSignals(false), open(false) {
     // stat validators
     ui.boyLevelText->setValidator(levelValidator);
     ui.boyCurrentHPText->setValidator(under1000Validator);
-    ui.boyMaxHPText->setValidator(under1000Validator);
     ui.boyExperienceText->setValidator(any24BitValidator);
 
     ui.dogLevelText->setValidator(levelValidator);
     ui.dogCurrentHPText->setValidator(under1000Validator);
-    ui.dogMaxHPText->setValidator(under1000Validator);
     ui.dogExperienceText->setValidator(any24BitValidator);
     ui.dogAttackLevelText->setValidator(weaponLevelValidator);
     
@@ -244,8 +279,8 @@ MainWindow::MainWindow() : QMainWindow(), ignoreSignals(false), open(false) {
 bool MainWindow::confirmClose() {
     if (sram->isModified()) {
         int choice =
-            QMessageBox::question(this, "Warning: Unsaved Changes",
-                                  "Save changes?", QMessageBox::Yes,
+            QMessageBox::question(this, tr("Warning: Unsaved Changes"),
+                                  tr("Save changes?"), QMessageBox::Yes,
                                   QMessageBox::No, QMessageBox::Cancel);
         
         if (choice == QMessageBox::Yes) {
@@ -265,7 +300,7 @@ bool MainWindow::confirmClose() {
 
 void MainWindow::openSRAM(const QString &filename) {
     try {
-        sram = new SRAMFile(filename);
+        sram = new SRAMFile(filename, region);
         sramFile = new QString(filename);
         open = true;
         
@@ -274,12 +309,12 @@ void MainWindow::openSRAM(const QString &filename) {
         QString temp;
         
         if (e.getError() == ISFE_INVALIDSIZE) {
-            temp = "Invalid SRAM File Size";
+            temp = tr("Invalid SRAM File Size");
         } else if (e.getError() == ISFE_NOVALIDGAMES) {
-            temp = "No Save Games Found";
+            temp = tr("No Save Games Found");
         }
         
-        QMessageBox::warning(this, "Unable to Open SRAM File", temp,
+        QMessageBox::warning(this, tr("Unable to Open SRAM File"), temp,
                              QMessageBox::Ok,  QMessageBox::NoButton);
     }
 }
@@ -361,6 +396,38 @@ void MainWindow::setMoney(enum sf_money money, const QString &text) {
     emit uiChanged();
 }
 
+void MainWindow::setRegion(enum sf_region region) {
+    Q_ASSERT(!open);
+    
+    QRegExpValidator *validator;
+    
+    this->region = region;
+    
+    switch (region) {
+        case REGION_GERMANY:
+            validator = new QRegExpValidator(
+                QRegExp("[A-Za-z1-3,\\.!'\\-&# "
+                        "\\x00C4\\x00D6\\x00DC\\x00DF\\x00E4\\x00F6\\x00FC]*"),
+                this);
+            break;
+            
+        case REGION_SPAIN:
+            validator = new QRegExpValidator(
+                QRegExp("[A-Za-z0-9,\\.!'\\-& \\x00F1]*"),
+                this);
+            break;
+            
+        default:
+            // US/UK English and French use the same alphabet for names
+            validator = new QRegExpValidator(
+                QRegExp("[A-Za-z0-9,\\.!'\\-&# ]*"),
+                this);
+    }
+    
+    ui.boyNameText->setValidator(validator);
+    ui.dogNameText->setValidator(validator);
+}
+
 void MainWindow::setTradeGood(enum sf_tradegood tradegood,
                               const QString &text) {
     Q_ASSERT(open);
@@ -424,7 +491,7 @@ void MainWindow::showActualLevel(std::pair<int, int> level,
     level.second = static_cast<int>(std::floor(level.second / 2.56));
     
     QString status =
-        QString("Actual Level %1:%2").arg(level.first).arg(level.second);
+        QString(tr("Actual Level %1:%2")).arg(level.first).arg(level.second);
     
     switch (weapon) {
         case SF_BONECRUSHER:
@@ -550,13 +617,11 @@ void MainWindow::onSRAMFileOpened() {
     // load boy's stats
     ui.boyLevelText->setText(QString::number(sram->getLevel(SF_BOY)));
     ui.boyCurrentHPText->setText(QString::number(sram->getCurrentHP(SF_BOY)));
-    ui.boyMaxHPText->setText(QString::number(sram->getMaxHP(SF_BOY)));
     ui.boyExperienceText->setText(QString::number(sram->getExperience(SF_BOY)));
     
     // load dog's stats
     ui.dogLevelText->setText(QString::number(sram->getLevel(SF_DOG)));
     ui.dogCurrentHPText->setText(QString::number(sram->getCurrentHP(SF_DOG)));
-    ui.dogMaxHPText->setText(QString::number(sram->getMaxHP(SF_DOG)));
     ui.dogExperienceText->setText(QString::number(sram->getExperience(SF_DOG)));
     
     level = sram->getAttackLevel();
@@ -992,6 +1057,13 @@ void MainWindow::onUIChanged() {
     ui.fileSave->setEnabled(open && sram->isModified());
     ui.fileSaveAs->setEnabled(open);
     
+    // you can't change the region after the game is open
+    ui.regionUnitedStates->setEnabled(!open);
+    ui.regionEngland->setEnabled(!open);
+    ui.regionFrance->setEnabled(!open);
+    ui.regionGermany->setEnabled(!open);
+    ui.regionSpain->setEnabled(!open);
+    
     ui.tabWidget->setVisible(open);
     
     if (open) {
@@ -1177,13 +1249,6 @@ void MainWindow::on_boyLevelText_textEdited(const QString &text) {
     }
 }
 
-void MainWindow::on_boyMaxHPText_textEdited(const QString &text) {
-    Q_ASSERT(open);
-    
-    sram->setMaxHP(SF_BOY, text.toUInt());
-    emit uiChanged();
-}
-
 void MainWindow::on_boyNameText_textEdited(const QString &name) {
     Q_ASSERT(open);
     
@@ -1241,13 +1306,6 @@ void MainWindow::on_dogLevelText_textEdited(const QString &text) {
     }
 }
 
-void MainWindow::on_dogMaxHPText_textEdited(const QString &text) {
-    Q_ASSERT(open);
-    
-    sram->setMaxHP(SF_DOG, text.toUInt());
-    emit uiChanged();
-}
-
 void MainWindow::on_dogNameText_textEdited(const QString &name) {
     Q_ASSERT(open);
     
@@ -1264,29 +1322,24 @@ void MainWindow::on_fileClose_triggered(bool) {
         open = false;
         
         emit uiChanged();
-        ui.tabWidget->setCurrentIndex(0);
     }
 }
 
 void MainWindow::on_fileOpen_triggered(bool) {
-    if (open) {
-        ui.fileClose->trigger();
-        
-        // we must've decided not to close
-        if (open) {
-            return;
-        }
+    if (open && !confirmClose()) {
+        return;
     }
     
     QString filename =
         QFileDialog::getOpenFileName(this,
-                                     "Open Secret of Evermore SRAM File",
-                                     "", "SRAM Files (*.srm)");
+                                     tr("Open Secret of Evermore SRAM File"),
+                                     "", tr("SRAM Files (*.srm)"));
     
     if (filename.isNull()) {
         return;
     }
     
+    ui.tabWidget->setCurrentIndex(0);
     openSRAM(filename);
 }
 
@@ -1294,8 +1347,8 @@ void MainWindow::on_fileSave_triggered(bool) {
     Q_ASSERT(open);
     
     if (!sram->save(*sramFile)) {
-        QMessageBox::warning(this, "Unable to Save SRAM File",
-                             "An I/O error occurred while trying to save.",
+        QMessageBox::warning(this, tr("Unable to Save SRAM File"),
+                             tr("An I/O error occurred while trying to save."),
                              QMessageBox::Ok, QMessageBox::NoButton);
     }
     
@@ -1306,8 +1359,8 @@ void MainWindow::on_fileSaveAs_triggered(bool) {
     Q_ASSERT(open);
     
     QString temp =
-        QFileDialog::getSaveFileName(this, "Save SRAM File As",
-                                     "", "SRAM File (*.srm)");
+        QFileDialog::getSaveFileName(this, tr("Save SRAM File As"),
+                                     "", tr("SRAM Files (*.srm)"));
                                      
     if (temp.isNull()) {
         return;
@@ -1320,9 +1373,18 @@ void MainWindow::on_fileSaveAs_triggered(bool) {
 }
 
 void MainWindow::on_helpAbout_triggered(bool) {
-    QMessageBox::about(this, "About soesrame",
-                       "Secret of Evermore SRAM Editor 0.92\n"
-                       "Copyright (C) 2006 emuWorks\n"
+    /*
+    QString title = tr("About soesrame");
+    QString message = tr("Secret of Evermore SRAM Editor 0.93\n"
+                       "Copyright (C) 2006,2008 emuWorks\n"
                        "http://games.technoplaza.net/");
+    
+    QMessageBox::about(this, title, message);*/
+    
+    if (!aboutDialog) {
+        aboutDialog = new AboutDialog(this);
+    }
+    
+    aboutDialog->show();
 }
 

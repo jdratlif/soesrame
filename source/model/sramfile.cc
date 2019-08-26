@@ -1,6 +1,6 @@
 /*
  * Secret of Evermore SRAM Editor
- * Copyright (C) 2006 emuWorks
+ * Copyright (C) 2006,2008 emuWorks
  * http://games.technoplaza.net/
  *
  * This file is part of Secret of Evermore SRAM Editor.
@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: sramfile.cc,v 1.23 2006/09/10 05:04:52 technoplaza Exp $
+// $Id: sramfile.cc,v 1.27 2008/01/26 16:40:51 technoplaza Exp $
 
 #include <cstring>
 #include <fstream>
@@ -114,8 +114,8 @@ const std::pair<int, int> SRAMFile::SRAM_WEAPON_OFFSETS[] =
         std::pair<int, int>(0x27A, 0x20)   // bazooka
     };
 
-SRAMFile::SRAMFile(const QString &filename) throw(InvalidSRAMFileException)
-    : modified(false) {
+SRAMFile::SRAMFile(const QString &filename, enum sf_region region)
+    throw(InvalidSRAMFileException) : region(region), modified(false) {
     std::ifstream file(filename.toAscii().data(), 
                        std::ios_base::in | std::ios_base::binary);
     
@@ -134,6 +134,7 @@ SRAMFile::SRAMFile(const QString &filename) throw(InvalidSRAMFileException)
     file.close();
     
     bool valid = false;
+    std::memset(this->valid, 0, 4 * sizeof(bool));
     
     for (int game = 3; game >= 0; --game) {
         if (checksum(game) == getChecksum(game)) {
@@ -149,7 +150,9 @@ SRAMFile::SRAMFile(const QString &filename) throw(InvalidSRAMFileException)
 }
 
 quint16 SRAMFile::checksum(int game) const {
-    quint32 checksum = 0x43F;
+    quint32 checksum = ((region == REGION_UNITEDSTATES) ?
+                        SRAM_CHECKSUM_START_US :
+                        SRAM_CHECKSUM_START_EUROPE);
     unsigned char temp = checksum +
                          sram[SRAM_GAME_OFFSET + 2 + game * SRAM_GAME_SIZE];
     
@@ -306,7 +309,7 @@ quint16 SRAMFile::getCurrentHP(enum sf_hero hero) const {
 
 void SRAMFile::setCurrentHP(enum sf_hero hero, quint16 hp) {
     Q_ASSERT(isValid(getGame()));
-    Q_ASSERT((hp >= 0) && (hp < 1000));
+    Q_ASSERT(hp < 1000);
     
     quint16 *data = reinterpret_cast<quint16 *>(offset +
                                                 ((hero == SF_BOY) ?
@@ -411,7 +414,7 @@ quint16 SRAMFile::getMaxHP(enum sf_hero hero) const {
 
 void SRAMFile::setMaxHP(enum sf_hero hero, quint16 hp) {
     Q_ASSERT(isValid(getGame()));
-    Q_ASSERT((hp >= 0) && (hp < 1000));
+    Q_ASSERT(hp < 1000);
     
     quint16 *data = reinterpret_cast<quint16 *>(offset +
                                                 ((hero == SF_BOY) ?
@@ -453,8 +456,22 @@ QString SRAMFile::getName(enum sf_hero hero) const {
                                        ((hero == SF_BOY) ?
                                         SRAM_BOY_NAME_OFFSET :
                                         SRAM_DOG_NAME_OFFSET));
-                                               
-    return QString::fromAscii(data);
+                                        
+    QString name = QString::fromAscii(data);
+    
+    if (region == REGION_GERMANY) {
+        name.replace(QChar(0xCB), QChar(0xC4)); // fix A umlaut
+        name.replace(QChar(0xDB), QChar(0xD6)); // fix O umlaut
+        name.replace(QChar(0xDF), QChar(0xDC)); // fix U umlaut
+        name.replace(QChar(0xE3), QChar(0xE4)); // fix a umlaut
+        name.replace(QChar(0xEF), QChar(0xF6)); // fix o umlaut
+        name.replace(QChar(0xF3), QChar(0xFC)); // fix u umlaut
+        name.replace(QChar(0xC6), QChar(0xDF)); // fix eszett
+    } else if (region == REGION_SPAIN) {
+        name.replace(QChar(0xD7), QChar(0xF1)); // fix n tilde
+    }
+    
+    return name;
 }
 
 void SRAMFile::setName(enum sf_hero hero, const QString &name) {
@@ -465,7 +482,21 @@ void SRAMFile::setName(enum sf_hero hero, const QString &name) {
                                                     SRAM_BOY_NAME_OFFSET :
                                                     SRAM_DOG_NAME_OFFSET));
                                                     
-    std::strcpy(data, name.left(15).toAscii().data());
+    QString temp = name;
+    
+    if (region == REGION_GERMANY) {
+        temp.replace(QChar(0xDF), QChar(0xC6)); // fix eszett
+        temp.replace(QChar(0xFC), QChar(0xF3)); // fix u umlaut
+        temp.replace(QChar(0xF6), QChar(0xEF)); // fix o umlaut
+        temp.replace(QChar(0xE4), QChar(0xE3)); // fix a umlaut
+        temp.replace(QChar(0xDC), QChar(0xDF)); // fix U umlaut
+        temp.replace(QChar(0xD6), QChar(0xDB)); // fix O umlaut
+        temp.replace(QChar(0xC4), QChar(0xCB)); // fix A umlaut
+    } else if (region == REGION_SPAIN) {
+        temp.replace(QChar(0xF1), QChar(0xD7)); // fix n tilde
+    }
+    
+    std::strcpy(data, temp.left(15).toAscii().data());
     
     modified = true;
 }
@@ -481,7 +512,7 @@ quint16 SRAMFile::getTradeGood(enum sf_tradegood tradegood) const {
 
 void SRAMFile::setTradeGood(enum sf_tradegood tradegood, quint16 count) {
     Q_ASSERT(isValid(getGame()));
-    Q_ASSERT((count >= 0) && (count < 100));
+    Q_ASSERT(count < 100);
     
     quint16 *data =
         reinterpret_cast<quint16 *>(offset + SRAM_TRADEGOODS_OFFSET);

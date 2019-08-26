@@ -1,6 +1,6 @@
 /*
  * Secret of Evermore SRAM Editor
- * Copyright (C) 2006 emuWorks
+ * Copyright (C) 2006,2008 emuWorks
  * http://games.technoplaza.net/
  *
  * This file is part of Secret of Evermore SRAM Editor.
@@ -20,10 +20,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: sramfile.hh,v 1.18 2006/09/02 16:24:45 technoplaza Exp $
+// $Id: sramfile.hh,v 1.23 2008/01/24 01:18:03 technoplaza Exp $
 
-#ifndef _SOESRAME_SRAMFILE_HH_
-#define _SOESRAME_SRAMFILE_HH_
+#ifndef SOESRAME_SRAMFILE_HH_
+#define SOESRAME_SRAMFILE_HH_
 
 #include <utility>
 
@@ -52,6 +52,12 @@ namespace soesrame {
     
     /// offset of the boy's name
     const int SRAM_BOY_NAME_OFFSET = 0x26;
+    
+    /// the starting value for the checksum in the US version
+    const int SRAM_CHECKSUM_START_US = 0x43F;
+    
+    /// the starting value for the checksum in the European versions
+    const int SRAM_CHECKSUM_START_EUROPE = 0x16FF;
     
     /// offset of the game's checksum
     const int SRAM_CHECKSUM_OFFSET = 0x0;
@@ -151,6 +157,12 @@ namespace soesrame {
         SF_TALONS, SF_JEWELS, SF_GOLDCOINS, SF_CREDITS
     };
     
+    /// the game regions
+    enum sf_region {
+        REGION_UNITEDSTATES, REGION_ENGLAND,
+        REGION_FRANCE, REGION_GERMANY, REGION_SPAIN
+    };
+    
     /// the market trading goods
     enum sf_tradegood {
         SF_ANNIHILATIONAMULET, SF_BEADS, SF_CERAMICPOT, SF_CHICKEN,
@@ -165,9 +177,11 @@ namespace soesrame {
         SF_HORNSPEAR, SF_BRONZESPEAR, SF_LANCEWEAPON, SF_LASERLANCE, SF_BAZOOKA
     };
     
+    /// model of a Secret of Evermore SRAM file
     class SRAMFile {
     private:
         int game;
+        enum sf_region region;
         unsigned char *offset;
         unsigned char sram[SRAM_FILE_SIZE];
         bool modified, valid[4];
@@ -212,11 +226,13 @@ namespace soesrame {
          * Creates a new SRAMFile.
          *
          * @param filename The SRAM file to load.
+         * @param region The game's region.
          *
          * @throws InvalidSRAMFileException if the file is not a valid Secret of
          *         Evermore SRAM file.
          */
-        SRAMFile(const QString &filename) throw(InvalidSRAMFileException);
+        SRAMFile(const QString &filename, enum sf_region region)
+            throw(InvalidSRAMFileException);
         
         /**
          * Saves this SRAMFile back to disk.
