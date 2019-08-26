@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-| Secret of Evermore SRAM Editor 0.90
+| Secret of Evermore SRAM Editor 0.91
 | Copyright (C) 2006 emuWorks
 | http://games.technoplaza.net/
 --------------------------------------------------------------------------------
@@ -96,6 +96,10 @@
 | 4.0 Revision History
 --------------------------------------------------------------------------------
 
+  Version 0.91 (September 7, 2006)
+    - Retooled GUI to fit in 800x600 (tight fit on Mac OS X though)
+    - Fixed bug that caused incorrect "actual weapon level" to be displayed
+    
   Version 0.90 (September 2, 2006)
     - Initial Release
 

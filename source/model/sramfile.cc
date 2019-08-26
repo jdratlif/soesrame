@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: sramfile.cc,v 1.21 2006/09/02 20:27:50 technoplaza Exp $
+// $Id: sramfile.cc,v 1.22 2006/09/06 14:22:00 technoplaza Exp $
 
 #include <cstring>
 #include <fstream>
@@ -345,7 +345,6 @@ void SRAMFile::setExperience(enum sf_hero hero, quint32 experience) {
 
 void SRAMFile::setGame(int game) {
     Q_ASSERT((game >= 0) && (game < 4));
-    Q_ASSERT(isValid(getGame()));
     
     this->game = game;
     offset = sram + SRAM_GAME_OFFSET + (game * SRAM_GAME_SIZE);

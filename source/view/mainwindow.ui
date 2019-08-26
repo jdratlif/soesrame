@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>796</width>
-    <height>554</height>
+    <width>652</width>
+    <height>528</height>
    </rect>
   </property>
   <property name="acceptDrops" >
@@ -37,7 +37,7 @@
       <property name="currentIndex" >
        <number>0</number>
       </property>
-      <widget class="QWidget" name="tab1" >
+      <widget class="QWidget" name="partyTab" >
        <attribute name="title" >
         <string>Party</string>
        </attribute>
@@ -283,7 +283,7 @@
             </property>
             <property name="sizeHint" >
              <size>
-              <width>641</width>
+              <width>591</width>
               <height>20</height>
              </size>
             </property>
@@ -628,7 +628,7 @@
             </property>
             <property name="sizeHint" >
              <size>
-              <width>751</width>
+              <width>711</width>
               <height>20</height>
              </size>
             </property>
@@ -1100,39 +1100,6 @@
                </item>
               </layout>
              </item>
-             <item>
-              <layout class="QVBoxLayout" >
-               <property name="margin" >
-                <number>0</number>
-               </property>
-               <property name="spacing" >
-                <number>6</number>
-               </property>
-               <item>
-                <widget class="QCheckBox" name="bazookaCheck" >
-                 <property name="text" >
-                  <string>Bazooka</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer>
-                 <property name="orientation" >
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                 <property name="sizeType" >
-                  <enum>QSizePolicy::Maximum</enum>
-                 </property>
-                 <property name="sizeHint" >
-                  <size>
-                   <width>20</width>
-                   <height>81</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
             </layout>
            </widget>
           </item>
@@ -1143,7 +1110,7 @@
             </property>
             <property name="sizeHint" >
              <size>
-              <width>422</width>
+              <width>5</width>
               <height>20</height>
              </size>
             </property>
@@ -1159,16 +1126,1035 @@
           <property name="sizeHint" >
            <size>
             <width>20</width>
-            <height>31</height>
+            <height>281</height>
            </size>
           </property>
          </spacer>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_3" >
+      <widget class="QWidget" name="alchemyTab" >
        <attribute name="title" >
         <string>Alchemy</string>
+       </attribute>
+       <layout class="QVBoxLayout" >
+        <property name="margin" >
+         <number>9</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="groupBox_7" >
+            <property name="title" >
+             <string>Alchemys &amp;&amp; Alchemy Levels</string>
+            </property>
+            <layout class="QVBoxLayout" >
+             <property name="margin" >
+              <number>9</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <layout class="QGridLayout" >
+               <property name="margin" >
+                <number>0</number>
+               </property>
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <item row="3" column="2" >
+                <widget class="QLineEdit" name="drainText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1" >
+                <widget class="QSpinBox" name="explosionSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="6" >
+                <widget class="QCheckBox" name="levitateCheck" >
+                 <property name="text" >
+                  <string>Levitate</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="8" >
+                <widget class="QLineEdit" name="slowBurnText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="1" >
+                <widget class="QSpinBox" name="revealerSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="2" >
+                <widget class="QLineEdit" name="oneUpText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="1" >
+                <widget class="QSpinBox" name="oneUpSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="7" >
+                <widget class="QSpinBox" name="crushSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="7" >
+                <widget class="QSpinBox" name="fireballSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1" >
+                <widget class="QSpinBox" name="flashSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="5" >
+                <widget class="QLineEdit" name="reviveText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2" >
+                <widget class="QLineEdit" name="cureText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="5" >
+                <widget class="QLineEdit" name="firePowerText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="3" >
+                <widget class="QCheckBox" name="forceFieldCheck" >
+                 <property name="text" >
+                  <string>Force Field</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0" >
+                <widget class="QCheckBox" name="drainCheck" >
+                 <property name="text" >
+                  <string>Drain</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1" >
+                <widget class="QSpinBox" name="drainSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="11" column="1" >
+                <widget class="QSpinBox" name="superHealSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="2" >
+                <widget class="QLineEdit" name="explosionText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="2" >
+                <widget class="QLineEdit" name="healText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="4" >
+                <widget class="QSpinBox" name="reflectSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="6" >
+                <widget class="QCheckBox" name="doubleDrainCheck" >
+                 <property name="text" >
+                  <string>Double Drain</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="5" >
+                <widget class="QLineEdit" name="lanceAlchemyText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="7" >
+                <widget class="QSpinBox" name="barrierSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="3" >
+                <widget class="QCheckBox" name="lanceAlchemyCheck" >
+                 <property name="text" >
+                  <string>Lance</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="3" >
+                <widget class="QCheckBox" name="energizeCheck" >
+                 <property name="text" >
+                  <string>Energize</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="4" >
+                <widget class="QSpinBox" name="forceFieldSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="5" >
+                <widget class="QLineEdit" name="forceFieldText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="6" >
+                <widget class="QCheckBox" name="barrierCheck" >
+                 <property name="text" >
+                  <string>Barrier</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="7" >
+                <widget class="QSpinBox" name="regrowthSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="6" >
+                <widget class="QCheckBox" name="slowBurnCheck" >
+                 <property name="text" >
+                  <string>Slow Burn</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="7" >
+                <widget class="QSpinBox" name="doubleDrainSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0" >
+                <widget class="QCheckBox" name="healCheck" >
+                 <property name="text" >
+                  <string>Heal</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3" >
+                <widget class="QCheckBox" name="atlasCheck" >
+                 <property name="text" >
+                  <string>Atlas</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="11" column="2" >
+                <widget class="QLineEdit" name="superHealText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="0" >
+                <widget class="QCheckBox" name="revealerCheck" >
+                 <property name="text" >
+                  <string>Revealer</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="5" >
+                <widget class="QLineEdit" name="corrosionText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1" >
+                <widget class="QSpinBox" name="acidRainSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="4" >
+                <widget class="QSpinBox" name="defendSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="8" >
+                <widget class="QLineEdit" name="hardBallText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="8" >
+                <widget class="QLineEdit" name="escapeText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1" >
+                <widget class="QSpinBox" name="callUpSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="7" >
+                <widget class="QSpinBox" name="hardBallSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="4" >
+                <widget class="QSpinBox" name="energizeSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="2" >
+                <widget class="QLineEdit" name="revealerText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="4" >
+                <widget class="QSpinBox" name="miracleCureSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="4" >
+                <widget class="QSpinBox" name="reviveSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="3" >
+                <widget class="QCheckBox" name="reviveCheck" >
+                 <property name="text" >
+                  <string>Revive</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4" >
+                <widget class="QSpinBox" name="atlasSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="0" >
+                <widget class="QCheckBox" name="oneUpCheck" >
+                 <property name="text" >
+                  <string>One Up</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="5" >
+                <widget class="QLineEdit" name="reflectText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="4" >
+                <widget class="QSpinBox" name="corrosionSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3" >
+                <widget class="QCheckBox" name="defendCheck" >
+                 <property name="text" >
+                  <string>Defend</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="1" >
+                <widget class="QSpinBox" name="lightningStormSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="2" >
+                <widget class="QLineEdit" name="flashText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="6" >
+                <widget class="QCheckBox" name="fireballCheck" >
+                 <property name="text" >
+                  <string>Fireball</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0" >
+                <widget class="QCheckBox" name="callUpCheck" >
+                 <property name="text" >
+                  <string>Call Up</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="8" >
+                <widget class="QLineEdit" name="crushText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="7" >
+                <widget class="QSpinBox" name="levitateSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="6" >
+                <widget class="QCheckBox" name="nitroCheck" >
+                 <property name="text" >
+                  <string>Nitro</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="5" >
+                <widget class="QLineEdit" name="energizeText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="4" >
+                <widget class="QSpinBox" name="firePowerSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="1" >
+                <widget class="QSpinBox" name="healSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                 <property name="value" >
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="8" >
+                <widget class="QLineEdit" name="levitateText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2" >
+                <widget class="QLineEdit" name="acidRainText" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="4" >
+                <widget class="QSpinBox" name="lanceAlchemySpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0" >
+                <widget class="QCheckBox" name="cureCheck" >
+                 <property name="text" >
+                  <string>Cure</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="6" >
+                <widget class="QCheckBox" name="crushCheck" >
+                 <property name="text" >
+                  <string>Crush</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="8" >
+                <widget class="QLineEdit" name="barrierText" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="3" >
+                <widget class="QCheckBox" name="firePowerCheck" >
+                 <property name="text" >
+                  <string>Fire Power</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0" >
+                <widget class="QCheckBox" name="explosionCheck" >
+                 <property name="text" >
+                  <string>Explosion</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="7" >
+                <widget class="QSpinBox" name="nitroSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="7" >
+                <widget class="QSpinBox" name="escapeSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2" >
+                <widget class="QLineEdit" name="callUpText" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="7" >
+                <widget class="QSpinBox" name="slowBurnSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="5" >
+                <widget class="QLineEdit" name="atlasText" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1" >
+                <widget class="QSpinBox" name="cureSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="11" column="0" >
+                <widget class="QCheckBox" name="superHealCheck" >
+                 <property name="text" >
+                  <string>Super Heal</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="6" >
+                <widget class="QCheckBox" name="escapeCheck" >
+                 <property name="text" >
+                  <string>Escape</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="8" >
+                <widget class="QLineEdit" name="fireballText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="5" >
+                <widget class="QLineEdit" name="miracleCureText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="6" >
+                <widget class="QCheckBox" name="regrowthCheck" >
+                 <property name="text" >
+                  <string>Regrowth</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0" >
+                <widget class="QCheckBox" name="flashCheck" >
+                 <property name="text" >
+                  <string>Flash</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="8" >
+                <widget class="QLineEdit" name="doubleDrainText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="6" >
+                <widget class="QCheckBox" name="hardBallCheck" >
+                 <property name="text" >
+                  <string>Hard Ball</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3" >
+                <widget class="QCheckBox" name="corrosionCheck" >
+                 <property name="text" >
+                  <string>Corrosion</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="8" >
+                <widget class="QLineEdit" name="nitroText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0" >
+                <widget class="QCheckBox" name="acidRainCheck" >
+                 <property name="text" >
+                  <string>Acid Rain</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="0" >
+                <widget class="QCheckBox" name="lightningStormCheck" >
+                 <property name="text" >
+                  <string>Lightning Storm</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="3" >
+                <widget class="QCheckBox" name="miracleCureCheck" >
+                 <property name="text" >
+                  <string>Miracle Cure</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="3" >
+                <widget class="QCheckBox" name="reflectCheck" >
+                 <property name="text" >
+                  <string>Reflect</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="2" >
+                <widget class="QLineEdit" name="lightningStormText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="8" >
+                <widget class="QLineEdit" name="regrowthText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="5" >
+                <widget class="QLineEdit" name="defendText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="0" >
+                <widget class="QCheckBox" name="speedCheck" >
+                 <property name="text" >
+                  <string>Speed</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="1" >
+                <widget class="QSpinBox" name="speedSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="2" >
+                <widget class="QLineEdit" name="speedText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="3" >
+                <widget class="QCheckBox" name="stingCheck" >
+                 <property name="text" >
+                  <string>Sting</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="4" >
+                <widget class="QSpinBox" name="stingSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="5" >
+                <widget class="QLineEdit" name="stingText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="6" >
+                <widget class="QCheckBox" name="stopCheck" >
+                 <property name="text" >
+                  <string>Stop</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="7" >
+                <widget class="QSpinBox" name="stopSpinner" >
+                 <property name="maximum" >
+                  <number>9</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="8" >
+                <widget class="QLineEdit" name="stopText" >
+                 <property name="maximumSize" >
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="maxLength" >
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>511</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>20</width>
+            <height>351</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="inventoryTab" >
+       <attribute name="title" >
+        <string>Inventory</string>
        </attribute>
        <layout class="QVBoxLayout" >
         <property name="margin" >
@@ -1687,7 +2673,7 @@
             </property>
             <property name="sizeHint" >
              <size>
-              <width>513</width>
+              <width>481</width>
               <height>20</height>
              </size>
             </property>
@@ -1695,1040 +2681,6 @@
           </item>
          </layout>
         </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QGroupBox" name="groupBox_7" >
-            <property name="title" >
-             <string>Alchemys &amp;&amp; Alchemy Levels</string>
-            </property>
-            <layout class="QVBoxLayout" >
-             <property name="margin" >
-              <number>9</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item>
-              <widget class="QWidget" name="widget" >
-               <layout class="QVBoxLayout" >
-                <property name="margin" >
-                 <number>0</number>
-                </property>
-                <property name="spacing" >
-                 <number>6</number>
-                </property>
-                <item>
-                 <layout class="QGridLayout" >
-                  <property name="margin" >
-                   <number>0</number>
-                  </property>
-                  <property name="spacing" >
-                   <number>6</number>
-                  </property>
-                  <item row="1" column="4" >
-                   <widget class="QSpinBox" name="crushSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="11" >
-                   <widget class="QLineEdit" name="nitroText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="10" >
-                   <widget class="QSpinBox" name="revealerSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="3" >
-                   <widget class="QCheckBox" name="drainCheck" >
-                    <property name="text" >
-                     <string>Drain</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="4" >
-                   <widget class="QSpinBox" name="atlasSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="1" >
-                   <widget class="QSpinBox" name="explosionSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="11" >
-                   <widget class="QLineEdit" name="revealerText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="6" >
-                   <widget class="QCheckBox" name="firePowerCheck" >
-                    <property name="text" >
-                     <string>Fire Power</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0" >
-                   <widget class="QCheckBox" name="corrosionCheck" >
-                    <property name="text" >
-                     <string>Corrosion</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="6" >
-                   <widget class="QCheckBox" name="barrierCheck" >
-                    <property name="text" >
-                     <string>Barrier</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="8" >
-                   <widget class="QLineEdit" name="energizeText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="8" column="5" >
-                   <widget class="QLineEdit" name="superHealText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="1" >
-                   <widget class="QSpinBox" name="forceFieldSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="7" >
-                   <widget class="QSpinBox" name="cureSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="8" >
-                   <widget class="QLineEdit" name="cureText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="5" >
-                   <widget class="QLineEdit" name="fireballText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="3" >
-                   <widget class="QCheckBox" name="fireballCheck" >
-                    <property name="text" >
-                     <string>Fireball</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="5" >
-                   <widget class="QLineEdit" name="hardBallText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="10" >
-                   <widget class="QSpinBox" name="lanceAlchemySpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="9" >
-                   <widget class="QCheckBox" name="nitroCheck" >
-                    <property name="text" >
-                     <string>Nitro</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="7" >
-                   <widget class="QSpinBox" name="regrowthSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="9" >
-                   <widget class="QCheckBox" name="lanceAlchemyCheck" >
-                    <property name="text" >
-                     <string>Lance</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="0" >
-                   <widget class="QCheckBox" name="oneUpCheck" >
-                    <property name="text" >
-                     <string>One Up</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="10" >
-                   <widget class="QSpinBox" name="callUpSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="5" >
-                   <widget class="QLineEdit" name="crushText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="2" >
-                   <widget class="QLineEdit" name="doubleDrainText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="9" >
-                   <widget class="QCheckBox" name="flashCheck" >
-                    <property name="text" >
-                     <string>Flash</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="11" >
-                   <widget class="QLineEdit" name="callUpText" >
-                    <property name="minimumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="4" >
-                   <widget class="QSpinBox" name="slowBurnSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="8" >
-                   <widget class="QLineEdit" name="regrowthText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="10" >
-                   <widget class="QSpinBox" name="nitroSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="2" >
-                   <widget class="QLineEdit" name="forceFieldText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="11" >
-                   <widget class="QLineEdit" name="stingText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="0" >
-                   <widget class="QCheckBox" name="doubleDrainCheck" >
-                    <property name="text" >
-                     <string>Double Drain</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="0" >
-                   <widget class="QCheckBox" name="forceFieldCheck" >
-                    <property name="text" >
-                     <string>Force Field</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="3" >
-                   <widget class="QCheckBox" name="crushCheck" >
-                    <property name="text" >
-                     <string>Crush</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="11" >
-                   <widget class="QLineEdit" name="escapeText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="8" column="3" >
-                   <widget class="QCheckBox" name="superHealCheck" >
-                    <property name="text" >
-                     <string>Super Heal</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="3" >
-                   <widget class="QCheckBox" name="lightningStormCheck" >
-                    <property name="text" >
-                     <string>Lightning Storm</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="0" >
-                   <widget class="QCheckBox" name="explosionCheck" >
-                    <property name="text" >
-                     <string>Explosion</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="11" >
-                   <widget class="QLineEdit" name="lanceAlchemyText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="2" >
-                   <widget class="QLineEdit" name="reviveText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="6" >
-                   <widget class="QCheckBox" name="healCheck" >
-                    <property name="text" >
-                     <string>Heal</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="10" >
-                   <widget class="QSpinBox" name="escapeSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="8" >
-                   <widget class="QLineEdit" name="firePowerText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="10" >
-                   <widget class="QSpinBox" name="stingSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="2" >
-                   <widget class="QLineEdit" name="acidRainText" >
-                    <property name="minimumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="6" >
-                   <widget class="QCheckBox" name="cureCheck" >
-                    <property name="text" >
-                     <string>Cure</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="5" >
-                   <widget class="QLineEdit" name="reflectText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="9" >
-                   <widget class="QCheckBox" name="stingCheck" >
-                    <property name="text" >
-                     <string>Sting</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="8" column="0" >
-                   <widget class="QCheckBox" name="stopCheck" >
-                    <property name="text" >
-                     <string>Stop</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="1" >
-                   <widget class="QSpinBox" name="oneUpSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="5" >
-                   <widget class="QLineEdit" name="slowBurnText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="9" >
-                   <widget class="QCheckBox" name="defendCheck" >
-                    <property name="text" >
-                     <string>Defend</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="5" >
-                   <widget class="QLineEdit" name="drainText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="4" >
-                   <widget class="QSpinBox" name="lightningStormSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="3" >
-                   <widget class="QCheckBox" name="hardBallCheck" >
-                    <property name="text" >
-                     <string>Hard Ball</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="0" >
-                   <widget class="QCheckBox" name="reviveCheck" >
-                    <property name="text" >
-                     <string>Revive</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="7" >
-                   <widget class="QSpinBox" name="speedSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="5" >
-                   <widget class="QLineEdit" name="atlasText" >
-                    <property name="minimumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="2" >
-                   <widget class="QLineEdit" name="levitateText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="2" >
-                   <widget class="QLineEdit" name="explosionText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="1" >
-                   <widget class="QSpinBox" name="levitateSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="3" >
-                   <widget class="QCheckBox" name="atlasCheck" >
-                    <property name="text" >
-                     <string>Atlas</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="4" >
-                   <widget class="QSpinBox" name="hardBallSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="0" >
-                   <widget class="QCheckBox" name="acidRainCheck" >
-                    <property name="text" >
-                     <string>Acid Rain</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1" >
-                   <widget class="QSpinBox" name="acidRainSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="2" >
-                   <widget class="QLineEdit" name="oneUpText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="3" >
-                   <widget class="QCheckBox" name="reflectCheck" >
-                    <property name="text" >
-                     <string>Reflect</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="4" >
-                   <widget class="QSpinBox" name="drainSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1" >
-                   <widget class="QSpinBox" name="doubleDrainSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="5" >
-                   <widget class="QLineEdit" name="lightningStormText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="1" >
-                   <widget class="QSpinBox" name="reviveSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="10" >
-                   <widget class="QSpinBox" name="defendSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="7" >
-                   <widget class="QSpinBox" name="miracleCureSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="11" >
-                   <widget class="QLineEdit" name="defendText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="6" >
-                   <widget class="QCheckBox" name="speedCheck" >
-                    <property name="text" >
-                     <string>Speed</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="7" >
-                   <widget class="QSpinBox" name="firePowerSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="8" >
-                   <widget class="QLineEdit" name="healText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="1" >
-                   <widget class="QSpinBox" name="corrosionSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="8" column="1" >
-                   <widget class="QSpinBox" name="stopSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="8" column="2" >
-                   <widget class="QLineEdit" name="stopText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="7" >
-                   <widget class="QSpinBox" name="barrierSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="6" >
-                   <widget class="QCheckBox" name="miracleCureCheck" >
-                    <property name="text" >
-                     <string>Miracle Cure</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="3" >
-                   <widget class="QCheckBox" name="slowBurnCheck" >
-                    <property name="text" >
-                     <string>Slow Burn</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="6" >
-                   <widget class="QCheckBox" name="energizeCheck" >
-                    <property name="text" >
-                     <string>Energize</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="0" >
-                   <widget class="QCheckBox" name="levitateCheck" >
-                    <property name="text" >
-                     <string>Levitate</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="9" >
-                   <widget class="QCheckBox" name="revealerCheck" >
-                    <property name="text" >
-                     <string>Revealer</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="11" >
-                   <widget class="QLineEdit" name="flashText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="8" >
-                   <widget class="QLineEdit" name="speedText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="8" >
-                   <widget class="QLineEdit" name="barrierText" >
-                    <property name="minimumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="8" column="4" >
-                   <widget class="QSpinBox" name="superHealSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="2" >
-                   <widget class="QLineEdit" name="corrosionText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="9" >
-                   <widget class="QCheckBox" name="escapeCheck" >
-                    <property name="text" >
-                     <string>Escape</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="10" >
-                   <widget class="QSpinBox" name="flashSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="7" >
-                   <widget class="QSpinBox" name="healSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                    <property name="value" >
-                     <number>0</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="4" >
-                   <widget class="QSpinBox" name="reflectSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="7" >
-                   <widget class="QSpinBox" name="energizeSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="8" >
-                   <widget class="QLineEdit" name="miracleCureText" >
-                    <property name="maximumSize" >
-                     <size>
-                      <width>40</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="maxLength" >
-                     <number>2</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="4" >
-                   <widget class="QSpinBox" name="fireballSpinner" >
-                    <property name="maximum" >
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="6" >
-                   <widget class="QCheckBox" name="regrowthCheck" >
-                    <property name="text" >
-                     <string>Regrowth</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="9" >
-                   <widget class="QCheckBox" name="callUpCheck" >
-                    <property name="text" >
-                     <string>Call Up</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <spacer>
-            <property name="orientation" >
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" >
-             <size>
-              <width>341</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>20</width>
-            <height>10</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab_4" >
-       <attribute name="title" >
-        <string>Inventory</string>
-       </attribute>
-       <layout class="QVBoxLayout" >
-        <property name="margin" >
-         <number>9</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
         <item>
          <layout class="QHBoxLayout" >
           <property name="margin" >
@@ -2955,11 +2907,34 @@
            </widget>
           </item>
           <item>
-           <widget class="QGroupBox" name="groupBox_15" >
-            <property name="title" >
-             <string>Dog Collars</string>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
             </property>
-            <layout class="QVBoxLayout" >
+            <property name="sizeHint" >
+             <size>
+              <width>661</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="groupBox_16" >
+            <property name="title" >
+             <string>Bazooka &amp;&amp; Bazooka Ammunition</string>
+            </property>
+            <layout class="QHBoxLayout" >
              <property name="margin" >
               <number>9</number>
              </property>
@@ -2967,106 +2942,77 @@
               <number>6</number>
              </property>
              <item>
-              <layout class="QGridLayout" >
-               <property name="margin" >
-                <number>0</number>
+              <widget class="QCheckBox" name="bazookaCheck" >
+               <property name="text" >
+                <string>Bazooka</string>
                </property>
-               <property name="spacing" >
-                <number>6</number>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_112" >
+               <property name="text" >
+                <string>Particle Bomb: </string>
                </property>
-               <item row="1" column="2" >
-                <widget class="QLabel" name="label_117" >
-                 <property name="text" >
-                  <string>Spot's Collar: </string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="3" >
-                <widget class="QLineEdit" name="spotsCollarText" >
-                 <property name="maximumSize" >
-                  <size>
-                   <width>40</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="maxLength" >
-                  <number>1</number>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0" >
-                <widget class="QLabel" name="label_115" >
-                 <property name="text" >
-                  <string>Defender Collar: </string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1" >
-                <widget class="QLineEdit" name="defenderCollarText" >
-                 <property name="maximumSize" >
-                  <size>
-                   <width>40</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="maxLength" >
-                  <number>1</number>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="3" >
-                <widget class="QLineEdit" name="spikyCollarText" >
-                 <property name="minimumSize" >
-                  <size>
-                   <width>40</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize" >
-                  <size>
-                   <width>40</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="maxLength" >
-                  <number>1</number>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="2" >
-                <widget class="QLabel" name="label_116" >
-                 <property name="text" >
-                  <string>Spiky Collar: </string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0" >
-                <widget class="QLabel" name="label_114" >
-                 <property name="text" >
-                  <string>Leather Collar: </string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1" >
-                <widget class="QLineEdit" name="leatherCollarText" >
-                 <property name="minimumSize" >
-                  <size>
-                   <width>40</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize" >
-                  <size>
-                   <width>40</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="maxLength" >
-                  <number>1</number>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="particleBombText" >
+               <property name="maximumSize" >
+                <size>
+                 <width>40</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength" >
+                <number>2</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_111" >
+               <property name="text" >
+                <string>Thunder Ball: </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="thunderBallText" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>40</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength" >
+                <number>2</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_113" >
+               <property name="text" >
+                <string>Cryo-Blast: </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cryoBlastText" >
+               <property name="maximumSize" >
+                <size>
+                 <width>40</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength" >
+                <number>2</number>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
@@ -3078,7 +3024,7 @@
             </property>
             <property name="sizeHint" >
              <size>
-              <width>411</width>
+              <width>641</width>
               <height>20</height>
              </size>
             </property>
@@ -3086,6 +3032,32 @@
           </item>
          </layout>
         </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>20</width>
+            <height>371</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="equipmentTab" >
+       <attribute name="title" >
+        <string>Equipment</string>
+       </attribute>
+       <layout class="QVBoxLayout" >
+        <property name="margin" >
+         <number>9</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
         <item>
          <layout class="QHBoxLayout" >
           <property name="margin" >
@@ -3384,104 +3356,13 @@
            </widget>
           </item>
           <item>
-           <widget class="QGroupBox" name="groupBox_16" >
-            <property name="title" >
-             <string>Bazooka Ammunition</string>
-            </property>
-            <layout class="QVBoxLayout" >
-             <property name="margin" >
-              <number>9</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item>
-              <layout class="QGridLayout" >
-               <property name="margin" >
-                <number>0</number>
-               </property>
-               <property name="spacing" >
-                <number>6</number>
-               </property>
-               <item row="2" column="0" >
-                <widget class="QLabel" name="label_113" >
-                 <property name="text" >
-                  <string>Cryo-Blast: </string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0" >
-                <widget class="QLabel" name="label_112" >
-                 <property name="text" >
-                  <string>Particle Bomb: </string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1" >
-                <widget class="QLineEdit" name="particleBombText" >
-                 <property name="maximumSize" >
-                  <size>
-                   <width>40</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="maxLength" >
-                  <number>2</number>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1" >
-                <widget class="QLineEdit" name="thunderBallText" >
-                 <property name="minimumSize" >
-                  <size>
-                   <width>40</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize" >
-                  <size>
-                   <width>40</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="maxLength" >
-                  <number>2</number>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1" >
-                <widget class="QLineEdit" name="cryoBlastText" >
-                 <property name="maximumSize" >
-                  <size>
-                   <width>40</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="maxLength" >
-                  <number>2</number>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0" >
-                <widget class="QLabel" name="label_111" >
-                 <property name="text" >
-                  <string>Thunder Ball: </string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
            <spacer>
             <property name="orientation" >
              <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" >
              <size>
-              <width>421</width>
+              <width>541</width>
               <height>20</height>
              </size>
             </property>
@@ -3793,7 +3674,7 @@
             </property>
             <property name="sizeHint" >
              <size>
-              <width>581</width>
+              <width>551</width>
               <height>20</height>
              </size>
             </property>
@@ -4105,7 +3986,137 @@
             </property>
             <property name="sizeHint" >
              <size>
-              <width>551</width>
+              <width>521</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="groupBox_15" >
+            <property name="title" >
+             <string>Dog Collars</string>
+            </property>
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>9</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_114" >
+               <property name="text" >
+                <string>Leather Collar: </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="leatherCollarText" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>40</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength" >
+                <number>1</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_116" >
+               <property name="text" >
+                <string>Spiky Collar: </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="spikyCollarText" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>40</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength" >
+                <number>1</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_115" >
+               <property name="text" >
+                <string>Defender Collar: </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="defenderCollarText" >
+               <property name="maximumSize" >
+                <size>
+                 <width>40</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength" >
+                <number>1</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_117" >
+               <property name="text" >
+                <string>Spot's Collar: </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="spotsCollarText" >
+               <property name="maximumSize" >
+                <size>
+                 <width>40</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength" >
+                <number>1</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>571</width>
               <height>20</height>
              </size>
             </property>
@@ -4118,20 +4129,17 @@
           <property name="orientation" >
            <enum>Qt::Vertical</enum>
           </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
           <property name="sizeHint" >
            <size>
             <width>20</width>
-            <height>10</height>
+            <height>5</height>
            </size>
           </property>
          </spacer>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_2" >
+      <widget class="QWidget" name="tradingTab" >
        <attribute name="title" >
         <string>Trading</string>
        </attribute>
@@ -4280,7 +4288,7 @@
             </property>
             <property name="sizeHint" >
              <size>
-              <width>251</width>
+              <width>591</width>
               <height>20</height>
              </size>
             </property>
@@ -4612,7 +4620,7 @@
             </property>
             <property name="sizeHint" >
              <size>
-              <width>191</width>
+              <width>531</width>
               <height>20</height>
              </size>
             </property>
@@ -4628,7 +4636,7 @@
           <property name="sizeHint" >
            <size>
             <width>20</width>
-            <height>141</height>
+            <height>431</height>
            </size>
           </property>
          </spacer>
@@ -4644,7 +4652,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>796</width>
+     <width>652</width>
      <height>21</height>
     </rect>
    </property>
@@ -4653,6 +4661,15 @@
      <string>&amp;Help</string>
     </property>
     <addaction name="helpAbout" />
+   </widget>
+   <widget class="QMenu" name="menu_Game" >
+    <property name="title" >
+     <string>&amp;Game</string>
+    </property>
+    <addaction name="gameGame1" />
+    <addaction name="gameGame2" />
+    <addaction name="gameGame3" />
+    <addaction name="gameGame4" />
    </widget>
    <widget class="QMenu" name="menuFile" >
     <property name="title" >
@@ -4671,15 +4688,6 @@
     <addaction name="fileSaveAs" />
     <addaction name="separator" />
     <addaction name="fileExit" />
-   </widget>
-   <widget class="QMenu" name="menu_Game" >
-    <property name="title" >
-     <string>&amp;Game</string>
-    </property>
-    <addaction name="gameGame1" />
-    <addaction name="gameGame2" />
-    <addaction name="gameGame3" />
-    <addaction name="gameGame4" />
    </widget>
    <addaction name="menuFile" />
    <addaction name="menu_Game" />

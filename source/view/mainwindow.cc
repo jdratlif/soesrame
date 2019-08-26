@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: mainwindow.cc,v 1.18 2006/09/02 19:49:22 technoplaza Exp $
+// $Id: mainwindow.cc,v 1.19 2006/09/06 14:22:00 technoplaza Exp $
 
 #include <cmath>
 
@@ -391,6 +391,7 @@ void MainWindow::setWeaponLevelMajor(enum sf_weapon weapon, int value) {
     temp.first = value;
     sram->setWeaponLevel(weapon, temp);
     
+    showActualLevel(temp, weapon);
     emit uiChanged();
 }
 
@@ -1320,7 +1321,7 @@ void MainWindow::on_fileSaveAs_triggered(bool) {
 
 void MainWindow::on_helpAbout_triggered(bool) {
     QMessageBox::about(this, "About soesrame",
-                       "Secret of Evermore SRAM Editor 0.90\n"
+                       "Secret of Evermore SRAM Editor 0.91\n"
                        "Copyright (C) 2006 emuWorks\n"
                        "http://games.technoplaza.net/");
 }
