@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-| Secret of Evermore SRAM Editor 0.91
+| Secret of Evermore SRAM Editor 0.92
 | Copyright (C) 2006 emuWorks
 | http://games.technoplaza.net/
 --------------------------------------------------------------------------------
@@ -96,6 +96,11 @@
 | 4.0 Revision History
 --------------------------------------------------------------------------------
 
+  Version 0.92 (September 10, 2006)
+    - Added SRAM document
+    - Fixed minor bug in sanity algorithm
+    - Fixed some display issues from 0.91
+
   Version 0.91 (September 7, 2006)
     - Retooled GUI to fit in 800x600 (tight fit on Mac OS X though)
     - Fixed bug that caused incorrect "actual weapon level" to be displayed
@@ -112,7 +117,10 @@
 --------------------------------------------------------------------------------
 
   Thanks to phonymike for discovering the checksum algorithm, and his help in
-  figuring out what his code meant.
+  understanding his code.
+  
+  Thanks to Geiger and the Snes9x team for their combined work on Geiger's
+  Snes9x debugger which was used to find the SRAM offsets.
 
 --------------------------------------------------------------------------------
 | 5.2 Known Issues

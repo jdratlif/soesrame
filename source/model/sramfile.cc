@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: sramfile.cc,v 1.22 2006/09/06 14:22:00 technoplaza Exp $
+// $Id: sramfile.cc,v 1.23 2006/09/10 05:04:52 technoplaza Exp $
 
 #include <cstring>
 #include <fstream>
@@ -150,11 +150,10 @@ SRAMFile::SRAMFile(const QString &filename) throw(InvalidSRAMFileException)
 
 quint16 SRAMFile::checksum(int game) const {
     quint32 checksum = 0x43F;
+    unsigned char temp = checksum +
+                         sram[SRAM_GAME_OFFSET + 2 + game * SRAM_GAME_SIZE];
     
-    for (int i = 2; i < SRAM_GAME_SIZE - 1; ++i) {
-        unsigned char temp = checksum;
-        temp += sram[SRAM_GAME_OFFSET + i + game * SRAM_GAME_SIZE];
-        
+    for (int i = 3; i < SRAM_GAME_SIZE; ++i) {
         checksum &= 0xFF00;
         checksum |= temp;
         checksum <<= 1;
@@ -162,6 +161,8 @@ quint16 SRAMFile::checksum(int game) const {
         if (checksum > 0xFFFF) {
             checksum -= 0xFFFF;
         }
+        
+        temp = checksum + sram[SRAM_GAME_OFFSET + i + game * SRAM_GAME_SIZE];
     }
     
     return static_cast<quint16>(checksum);

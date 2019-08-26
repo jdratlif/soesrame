@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: mainwindow.cc,v 1.19 2006/09/06 14:22:00 technoplaza Exp $
+// $Id: mainwindow.cc,v 1.20 2006/09/10 05:08:26 technoplaza Exp $
 
 #include <cmath>
 
@@ -1321,7 +1321,7 @@ void MainWindow::on_fileSaveAs_triggered(bool) {
 
 void MainWindow::on_helpAbout_triggered(bool) {
     QMessageBox::about(this, "About soesrame",
-                       "Secret of Evermore SRAM Editor 0.91\n"
+                       "Secret of Evermore SRAM Editor 0.92\n"
                        "Copyright (C) 2006 emuWorks\n"
                        "http://games.technoplaza.net/");
 }

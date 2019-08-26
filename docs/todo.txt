@@ -1,5 +1,3 @@
-- sram document
-
 (maybe someday...)
 - treasure offsets
 - dog sniff spots

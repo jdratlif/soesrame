@@ -1827,7 +1827,7 @@
                 <widget class="QLineEdit" name="callUpText" >
                  <property name="minimumSize" >
                   <size>
-                   <width>30</width>
+                   <width>0</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -2957,6 +2957,12 @@
              </item>
              <item>
               <widget class="QLineEdit" name="particleBombText" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="maximumSize" >
                 <size>
                  <width>40</width>
@@ -3003,6 +3009,12 @@
              </item>
              <item>
               <widget class="QLineEdit" name="cryoBlastText" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="maximumSize" >
                 <size>
                  <width>40</width>
@@ -4075,6 +4087,12 @@
              </item>
              <item>
               <widget class="QLineEdit" name="defenderCollarText" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="maximumSize" >
                 <size>
                  <width>40</width>
@@ -4095,6 +4113,12 @@
              </item>
              <item>
               <widget class="QLineEdit" name="spotsCollarText" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="maximumSize" >
                 <size>
                  <width>40</width>
