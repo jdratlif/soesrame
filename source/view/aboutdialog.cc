@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: aboutdialog.cc,v 1.1 2008/01/23 21:30:18 technoplaza Exp $
+// $Id: aboutdialog.cc,v 1.2 2008/12/18 05:54:28 jdratlif Exp $
 
 #include "view/aboutdialog.hh"
 

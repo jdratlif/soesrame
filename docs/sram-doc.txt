@@ -178,11 +178,11 @@
   you to using. Using characters outside this alphabet is untested.
   
   The German and Spanish versions have slightly different alphabets for the
-  names. In the Spanish version, # is replaced by the ñ. It is encoded in the
+  names. In the Spanish version, # is replaced by the Ã±. It is encoded in the
   name with the value 0xD7, not the unicode value 0x00F1.
   
   In the German version, the numbers 0, and 4-9 are replaced by the capital
-  and lower case vowels with umlauts and the eszett ß character. Their values
+  and lower case vowels with umlauts and the eszett ÃŸ character. Their values
   are encoded as follows:
   
   -----------------
@@ -193,7 +193,7 @@
    o umlaut = 0xEF
    u umlaut = 0xF3
    eszett   = 0xC6
-  -----------------
+  -----------------                                          
   
   The byte immediately after the character's name must be the null
   terminator (00). If there is no terminator, the game will crash on load.

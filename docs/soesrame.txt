@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-| Secret of Evermore SRAM Editor 0.93
+| Secret of Evermore SRAM Editor 0.93a
 | Copyright (C) 2006,2008 emuWorks
 | http://games.technoplaza.net/
 --------------------------------------------------------------------------------
@@ -9,7 +9,7 @@
 --------------------------------------------------------------------------------
 
   - 1.0 Introduction
-  - 2.0 Usage
+  - 2.0 Usage            
   - 3.0 Source Code
   - 4.0 Revision History
   - 5.0 Notes
@@ -104,46 +104,44 @@
 | 3.0 Source Code
 --------------------------------------------------------------------------------
 
-  As with all emuWorks software, this program is free software and the source
-  code is available.
+  Binaries are available for Windows (2000 and later), Linux, and Mac OS X
+  (Tiger or later). The source is also available if you want to compile it
+  yourself.
   
-  The source can be compiled on Windows, Mac OS X, and most Unix. It depends on
-  Qt/4 and an ISO C++ compiler, but any platform that has those things should
-  work. We provide support for Windows, Linux, and Mac OS X.
+  To compile, you will need a modern C++ compiler and Qt 4.
   
-  To compile the source code, you will need Qt and an ISO C++ compiler. Qt
-  version 4.2 or higher is required. You can get the opensource version of Qt
-  from http://www.trolltech.com/qt/.
+  On most platforms, compiling is as easy as opening a terminal and running
+  qmake && make (nmake for Visual Studio, or mingw32-make for mingw). That
+  should work on Linux, Mac OS X, and Windows.
   
-  Basic directions for compiling:
-    cd source
-    qmake
-    lrelease soesrame.pro
-    make
-    
-  Feel free to contact us if you have trouble building the source.
+  For more complete compilation instructions, consult our compiling HOWTO at
+  http://games.technoplaza.net/compile.php.
   
 --------------------------------------------------------------------------------
 | 4.0 Revision History
 --------------------------------------------------------------------------------
 
-  Version 0.93 (January 27, 2008)
-    - Removed Max HP modifiers
-    - Translated program into French, German, and Spanish
-    - Now works with European versions
-    - Fixed bug that allowed invalid games to be selected
+  Version 0.93a - Thursday, December 18, 2008
+    - Updated compilation instructions.
+    - Added icon on mac.
 
-  Version 0.92 (September 10, 2006)
-    - Added SRAM document
-    - Fixed minor bug in sanity algorithm
-    - Fixed some display issues from 0.91
+  Version 0.93 - Sunday, January 27, 2008
+    - Removed Max HP modifiers.
+    - Translated program into French, German, and Spanish.
+    - Now works with European versions.
+    - Fixed bug that allowed invalid games to be selected.
 
-  Version 0.91 (September 7, 2006)
-    - Retooled GUI to fit in 800x600 (tight fit on Mac OS X though)
-    - Fixed bug that caused incorrect "actual weapon level" to be displayed
+  Version 0.92 - Sunday, September 10, 2006
+    - Added SRAM document.
+    - Fixed minor bug in sanity algorithm.
+    - Fixed some display issues from 0.91.
+
+  Version 0.91 - Thursday, September 7, 2006
+    - Retooled GUI to fit in 800x600 (tight fit on Mac OS X though).
+    - Fixed bug that caused incorrect "actual weapon level" to be displayed.
     
-  Version 0.90 (September 2, 2006)
-    - Initial Release
+  Version 0.90 - Saturday, September 2, 2006
+    - Initial Release.
 
 --------------------------------------------------------------------------------
 | 5.0 Notes

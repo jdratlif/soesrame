@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: soesrame.cc,v 1.22 2008/01/24 15:14:20 technoplaza Exp $
+// $Id: soesrame.cc,v 1.23 2008/12/18 05:54:28 jdratlif Exp $
 
 #include <QApplication>
 #include <QTranslator>

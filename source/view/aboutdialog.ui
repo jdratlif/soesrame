@@ -42,7 +42,7 @@
           <string/>
          </property>
          <property name="pixmap" >
-          <pixmap resource="../resources/soesrame.qrc" >:/images/icon.png</pixmap>
+          <pixmap resource="../resources/soesrame.qrc" >:/images/icon32x32.png</pixmap>
          </property>
          <property name="alignment" >
           <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -52,7 +52,7 @@
        <item>
         <widget class="QLabel" name="label_2" >
          <property name="text" >
-          <string>Secret of Evermore SRAM Editor 0.93
+          <string>Secret of Evermore SRAM Editor 0.93a
 Copyright (C) 2006,2008 emuWorks
 http://games.technoplaza.net/</string>
          </property>
