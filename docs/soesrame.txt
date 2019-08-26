@@ -1,0 +1,150 @@
+--------------------------------------------------------------------------------
+| Secret of Evermore SRAM Editor 0.90
+| Copyright (C) 2006 emuWorks
+| http://games.technoplaza.net/
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+| Table of Contents
+--------------------------------------------------------------------------------
+
+  - 1.0 Introduction
+  - 2.0 Usage
+  - 3.0 Source Code
+  - 4.0 Revision History
+  - 5.0 Notes
+    - 5.1 Credits
+    - 5.2 Known Issues
+    - 5.3 Bugs
+  - 6.0 License
+  - 7.0 Contact Information
+  
+--------------------------------------------------------------------------------
+| 1.0 Introduction
+--------------------------------------------------------------------------------
+
+  The Secret of Evermore SRAM Editor, or soesrame (soh-ez-ra-muh) for short, is
+  a tool for editing Secret of Evermore save game files.
+  
+  The game's own method for saving games was to used a battery backed portion
+  of RAM commonly referred to as SRAM (save RAM). Emulators such as ZSNES and
+  Snes9x create a file with an .srm extention to keep this SRAM data. This
+  program is designed to edit these files and allow you to change your game
+  data.
+  
+  Note: this program is an SRAM editor, NOT a save state editor. This program
+  will not edit ZSNES save states (*.zs[t0-9]) or Snes9x freeze states
+  (*.00[0-9]). These states are emulator dependent, while SRAM files work with
+  any proper SNES emulator.
+  
+--------------------------------------------------------------------------------
+| 2.0 Usage
+--------------------------------------------------------------------------------
+
+  To use this program, you will need two things. First, obviously, is the
+  program binary for your platform. Precompiled binaries are available for
+  Windows, Linux, and Mac OS X. Second is a Secret of Evermore SRAM file. This
+  file, which is created by your emulator, will probably be in one of the
+  following places:
+  
+    - Your ROM directory
+    - Your emulator directory
+    - Your config directory (commonly ~/.zsnes or ~/.snes9x)
+    
+  It will be named the same as your ROM, but with an .srm extention. For
+  example: Secret of Evermore (U).srm. The binary versions of the program
+  include a sample srm file. The sample SRM file has two save games. The game in
+  slot 2 is a brand new game where the player was killed by the raptors and
+  taken to Fire Eye's village. The game in slot 1 is a copy of that game, but
+  edited with soesrame to give some big starting benefits to the player.
+  
+  When you first start the program, you can either drop the SRAM file onto the
+  window, or choose open from the file menu and search for it. Assuming you
+  opened a valid SRAM file, the program will display several controls that you
+  can then use to edit the games.
+  
+  By default, the first valid game in the SRAM is opened. You can change this
+  from the game menu.
+  
+  The controls should be more or less obvious. When you are done with your
+  changes, you can quit the program. If you have not saved your changes, the
+  program will ask you to save before exit.
+  
+--------------------------------------------------------------------------------
+| 3.0 Source Code
+--------------------------------------------------------------------------------
+
+  As with all emuWorks software, this program is free software and the source
+  code is available.
+  
+  The source can be compiled on Windows, Mac OS X, and most Unix. It depends on
+  Qt/4 and an ISO C++ compiler, but any platform that has those things should
+  work. We provide support for Windows, Linux, and Mac OS X.
+  
+  To compile the source code, you will need Qt/4 and an ISO C++ compiler. We
+  recommend using Qt 4.1 and g++ 3.3 or higher. You can get the opensource
+  version of Qt/4 from http://www.trolltech.com/qt/.
+  
+  Directions for compiling:
+    cd source
+    qmake
+    make (or nmake for Microsoft compilers)
+    
+  Feel free to contact us if you have trouble building the source.
+  
+--------------------------------------------------------------------------------
+| 4.0 Revision History
+--------------------------------------------------------------------------------
+
+  Version 0.90 (September 2, 2006)
+    - Initial Release
+
+--------------------------------------------------------------------------------
+| 5.0 Notes
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+| 5.1 Credits
+--------------------------------------------------------------------------------
+
+  Thanks to phonymike for discovering the checksum algorithm, and his help in
+  figuring out what his code meant.
+
+--------------------------------------------------------------------------------
+| 5.2 Known Issues
+--------------------------------------------------------------------------------
+
+  There shouldn't be a way to make your character's level 0, but I can't seem to
+  make Qt prevent you from entering that value. So it just quietly ignores the
+  0 value.
+  
+  The dog's attack level and the boy's weapon level progression have values that
+  range from 0-255, but the game only shows values between 0-99. In other words,
+  you have to kill 256 enemies to gain a weapon level, not 100. When you hover
+  over one of the level controls, it will display the actual level (as shown on
+  the evermore status screen) on the status bar. However, it will update when
+  you change it until you move the mouse off the control and back onto it.
+
+--------------------------------------------------------------------------------
+| 5.3 Bugs
+--------------------------------------------------------------------------------
+
+  There are no known bugs at this time.
+
+--------------------------------------------------------------------------------
+| 6.0 License
+--------------------------------------------------------------------------------
+
+  soesrame is licensed under the GNU GPL. You can read the full text of the
+  license in the docs/license.txt directory. You can also learn more about it
+  at http://www.gnu.org/.
+
+--------------------------------------------------------------------------------
+| 7.0 Contact Information
+--------------------------------------------------------------------------------
+
+  You can contact the author at webmaster <AT> technoplaza <DOT> net. We also
+  have an online feedback form at http://www.technoplaza.net/feedback.php.
+  
+  Visit our website at http://games.technoplaza.net/.
+
