@@ -1,7 +1,6 @@
-# $Id: soesrame.pro,v 1.14 2008/12/18 05:54:28 jdratlif Exp $
-
 TEMPLATE = app
-TARGET = 
+TARGET = soesrame
+QT += widgets
 DEPENDPATH += . exceptions model resources view
 INCLUDEPATH += .
 
@@ -28,4 +27,3 @@ win32 {
 macx {
 	RC_FILE = resources/soesrame.icns
 }
-
