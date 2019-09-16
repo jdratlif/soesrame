@@ -116,7 +116,7 @@ const std::pair<int, int> SRAMFile::SRAM_WEAPON_OFFSETS[] =
 
 SRAMFile::SRAMFile(const QString &filename, enum sf_region region)
     throw(InvalidSRAMFileException) : region(region), modified(false) {
-    std::ifstream file(filename.toAscii().data(), 
+    std::ifstream file(filename.toLatin1().data(), 
                        std::ios_base::in | std::ios_base::binary);
     
     if (!file) {
@@ -178,7 +178,7 @@ bool SRAMFile::save(const QString &filename) {
         }
     }
     
-    std::ofstream file(filename.toAscii().data(),
+    std::ofstream file(filename.toLatin1().data(),
                        std::ios_base::out | std::ios_base::binary);
     
     if (!file) {
@@ -457,7 +457,7 @@ QString SRAMFile::getName(enum sf_hero hero) const {
                                         SRAM_BOY_NAME_OFFSET :
                                         SRAM_DOG_NAME_OFFSET));
                                         
-    QString name = QString::fromAscii(data);
+    QString name = QString::fromLatin1(data);
     
     if (region == REGION_GERMANY) {
         name.replace(QChar(0xCB), QChar(0xC4)); // fix A umlaut
@@ -496,7 +496,7 @@ void SRAMFile::setName(enum sf_hero hero, const QString &name) {
         temp.replace(QChar(0xF1), QChar(0xD7)); // fix n tilde
     }
     
-    std::strcpy(data, temp.left(15).toAscii().data());
+    std::strcpy(data, temp.left(15).toLatin1().data());
     
     modified = true;
 }
