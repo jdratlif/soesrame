@@ -30,6 +30,7 @@
 #include <QFileDialog>
 #include <QIntValidator>
 #include <QMessageBox>
+#include <QMimeData>
 #include <QRegExpValidator>
 #include <QUrl>
 
