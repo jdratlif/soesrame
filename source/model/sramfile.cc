@@ -144,7 +144,7 @@ SRAMFile::SRAMFile(const QString &filename, enum sf_region region)
     }
 }
 
-quint16 SRAMFile::checksum(int game) const {
+auto SRAMFile::checksum(int game) const -> quint16 {
     quint32 checksum =
         ((region == REGION_UNITEDSTATES) ? SRAM_CHECKSUM_START_US
                                          : SRAM_CHECKSUM_START_EUROPE);
@@ -166,7 +166,7 @@ quint16 SRAMFile::checksum(int game) const {
     return static_cast<quint16>(checksum);
 }
 
-bool SRAMFile::save(const QString &filename) {
+auto SRAMFile::save(const QString &filename) -> bool {
     for (int game = 0; game < 4; ++game) {
         if (isValid(game)) {
             setChecksum(game, checksum(game));
@@ -192,7 +192,7 @@ bool SRAMFile::save(const QString &filename) {
     return true;
 }
 
-bool SRAMFile::hasAlchemy(enum sf_alchemy alchemy) const {
+auto SRAMFile::hasAlchemy(enum sf_alchemy alchemy) const -> bool {
     Q_ASSERT(isValid(getGame()));
 
     return (offset[SRAM_ALCHEMY_OFFSETS[alchemy].first]
@@ -213,7 +213,8 @@ void SRAMFile::setAlchemy(enum sf_alchemy alchemy, bool have) {
     modified = true;
 }
 
-std::pair<int, int> SRAMFile::getAlchemyLevel(enum sf_alchemy alchemy) const {
+auto SRAMFile::getAlchemyLevel(enum sf_alchemy alchemy) const
+    -> std::pair<int, int> {
     Q_ASSERT(isValid(getGame()));
 
     return std::pair<int, int>(
@@ -233,7 +234,7 @@ void SRAMFile::setAlchemyLevel(enum sf_alchemy     alchemy,
     modified = true;
 }
 
-std::pair<int, int> SRAMFile::getAttackLevel() const {
+auto SRAMFile::getAttackLevel() const -> std::pair<int, int> {
     Q_ASSERT(isValid(getGame()));
 
     return std::pair<int, int>(offset[SRAM_DOG_ATTACKLEVEL_OFFSET + 1],
@@ -251,7 +252,7 @@ void SRAMFile::setAttackLevel(std::pair<int, int> level) {
     modified = true;
 }
 
-bool SRAMFile::hasCharm(enum sf_charm charm) const {
+auto SRAMFile::hasCharm(enum sf_charm charm) const -> bool {
     Q_ASSERT(isValid(getGame()));
 
     return (offset[SRAM_CHARM_OFFSETS[charm].first]
@@ -272,7 +273,7 @@ void SRAMFile::setCharm(enum sf_charm charm, bool have) {
     modified = true;
 }
 
-quint16 SRAMFile::getChecksum(int game) const {
+auto SRAMFile::getChecksum(int game) const -> quint16 {
     const quint16 *data = reinterpret_cast<const quint16 *>(
         sram + SRAM_GAME_OFFSET + game * SRAM_GAME_SIZE + SRAM_CHECKSUM_OFFSET);
 
@@ -286,7 +287,7 @@ void SRAMFile::setChecksum(int game, quint16 checksum) {
     *data = qToLittleEndian(checksum);
 }
 
-quint16 SRAMFile::getCurrentHP(enum sf_hero hero) const {
+auto SRAMFile::getCurrentHP(enum sf_hero hero) const -> quint16 {
     Q_ASSERT(isValid(getGame()));
 
     const quint16 *data = reinterpret_cast<const quint16 *>(
@@ -310,7 +311,7 @@ void SRAMFile::setCurrentHP(enum sf_hero hero, quint16 hp) {
     modified = true;
 }
 
-quint32 SRAMFile::getExperience(enum sf_hero hero) const {
+auto SRAMFile::getExperience(enum sf_hero hero) const -> quint32 {
     Q_ASSERT(isValid(getGame()));
 
     const quint32 *data = reinterpret_cast<const quint32 *>(
@@ -343,7 +344,7 @@ void SRAMFile::setGame(int game) {
     offset     = sram + SRAM_GAME_OFFSET + (game * SRAM_GAME_SIZE);
 }
 
-int SRAMFile::getIngredient(enum sf_ingredient ingredient) const {
+auto SRAMFile::getIngredient(enum sf_ingredient ingredient) const -> int {
     Q_ASSERT(isValid(getGame()));
 
     return offset[SRAM_INGREDIENTS_OFFSET + ingredient];
@@ -357,7 +358,7 @@ void SRAMFile::setIngredient(enum sf_ingredient ingredient, int count) {
     modified                                     = true;
 }
 
-int SRAMFile::getItem(enum sf_item item) const {
+auto SRAMFile::getItem(enum sf_item item) const -> int {
     Q_ASSERT(isValid(getGame()));
 
     return offset[SRAM_ITEMS_OFFSET + item];
@@ -371,7 +372,7 @@ void SRAMFile::setItem(enum sf_item item, int count) {
     modified                         = true;
 }
 
-int SRAMFile::getLevel(enum sf_hero hero) const {
+auto SRAMFile::getLevel(enum sf_hero hero) const -> int {
     Q_ASSERT(isValid(getGame()));
 
     return offset[((hero == SF_BOY) ? SRAM_BOY_LEVEL_OFFSET
@@ -387,7 +388,7 @@ void SRAMFile::setLevel(enum sf_hero hero, int level) {
     modified = true;
 }
 
-quint16 SRAMFile::getMaxHP(enum sf_hero hero) const {
+auto SRAMFile::getMaxHP(enum sf_hero hero) const -> quint16 {
     Q_ASSERT(isValid(getGame()));
 
     const quint16 *data = reinterpret_cast<const quint16 *>(
@@ -409,7 +410,7 @@ void SRAMFile::setMaxHP(enum sf_hero hero, quint16 hp) {
     modified = true;
 }
 
-quint32 SRAMFile::getMoney(enum sf_money money) const {
+auto SRAMFile::getMoney(enum sf_money money) const -> quint32 {
     Q_ASSERT(isValid(getGame()));
 
     const quint32 *data = reinterpret_cast<const quint32 *>(
@@ -431,7 +432,7 @@ void SRAMFile::setMoney(enum sf_money money, quint32 count) {
     modified = true;
 }
 
-QString SRAMFile::getName(enum sf_hero hero) const {
+auto SRAMFile::getName(enum sf_hero hero) const -> QString {
     Q_ASSERT(isValid(getGame()));
 
     const char *data = reinterpret_cast<const char *>(
@@ -482,7 +483,7 @@ void SRAMFile::setName(enum sf_hero hero, const QString &name) {
     modified = true;
 }
 
-quint16 SRAMFile::getTradeGood(enum sf_tradegood tradegood) const {
+auto SRAMFile::getTradeGood(enum sf_tradegood tradegood) const -> quint16 {
     Q_ASSERT(isValid(getGame()));
 
     const quint16 *data =
@@ -502,7 +503,7 @@ void SRAMFile::setTradeGood(enum sf_tradegood tradegood, quint16 count) {
     modified        = true;
 }
 
-bool SRAMFile::hasWeapon(enum sf_weapon weapon) const {
+auto SRAMFile::hasWeapon(enum sf_weapon weapon) const -> bool {
     Q_ASSERT(isValid(getGame()));
 
     return (offset[SRAM_WEAPON_OFFSETS[weapon].first]
@@ -523,7 +524,8 @@ void SRAMFile::setWeapon(enum sf_weapon weapon, bool have) {
     modified = true;
 }
 
-std::pair<int, int> SRAMFile::getWeaponLevel(enum sf_weapon weapon) const {
+auto SRAMFile::getWeaponLevel(enum sf_weapon weapon) const
+    -> std::pair<int, int> {
     Q_ASSERT(isValid(getGame()));
     Q_ASSERT(weapon != SF_BAZOOKA);
 

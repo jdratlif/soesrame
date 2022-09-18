@@ -276,7 +276,7 @@ MainWindow::MainWindow()
     ui.ticketForExhibitionText->setValidator(under100Validator);
 }
 
-bool MainWindow::confirmClose() {
+auto MainWindow::confirmClose() -> bool {
     if (sram->isModified()) {
         int choice = QMessageBox::question(
             this, tr("Warning: Unsaved Changes"), tr("Save changes?"),
