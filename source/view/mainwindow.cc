@@ -30,6 +30,7 @@
 #include <QMessageBox>
 #include <QMimeData>
 #include <QRegExpValidator>
+#include <QScreen>
 #include <QUrl>
 
 #include "view/aboutdialog.hh"
@@ -471,7 +472,7 @@ void MainWindow::setWeaponLevelMinor(enum sf_weapon weapon,
 }
 
 void MainWindow::show() {
-    QRect screenRect = QApplication::desktop()->availableGeometry();
+    QRect screenRect = QApplication::primaryScreen()->availableGeometry();
     QRect windowRect = frameGeometry();
 
     move(screenRect.width() / 2 - windowRect.width() / 2,
