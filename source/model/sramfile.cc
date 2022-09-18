@@ -217,9 +217,8 @@ auto SRAMFile::getAlchemyLevel(enum sf_alchemy alchemy) const
     -> std::pair<int, int> {
     Q_ASSERT(isValid(getGame()));
 
-    return std::pair<int, int>(
-        offset[SRAM_ALCHEMYMAJORLEVELS_OFFSET + (alchemy * 2)],
-        offset[SRAM_ALCHEMYMINORLEVELS_OFFSET + (alchemy * 2)]);
+    return {offset[SRAM_ALCHEMYMAJORLEVELS_OFFSET + (alchemy * 2)],
+            offset[SRAM_ALCHEMYMINORLEVELS_OFFSET + (alchemy * 2)]};
 }
 
 void SRAMFile::setAlchemyLevel(enum sf_alchemy     alchemy,
@@ -237,8 +236,8 @@ void SRAMFile::setAlchemyLevel(enum sf_alchemy     alchemy,
 auto SRAMFile::getAttackLevel() const -> std::pair<int, int> {
     Q_ASSERT(isValid(getGame()));
 
-    return std::pair<int, int>(offset[SRAM_DOG_ATTACKLEVEL_OFFSET + 1],
-                               offset[SRAM_DOG_ATTACKLEVEL_OFFSET]);
+    return {offset[SRAM_DOG_ATTACKLEVEL_OFFSET + 1],
+            offset[SRAM_DOG_ATTACKLEVEL_OFFSET]};
 }
 
 void SRAMFile::setAttackLevel(std::pair<int, int> level) {
@@ -531,7 +530,7 @@ auto SRAMFile::getWeaponLevel(enum sf_weapon weapon) const
     const unsigned char *data =
         offset + SRAM_WEAPONLEVELS_OFFSET + (weapon * 2);
 
-    return std::pair<int, int>(data[1], data[0]);
+    return {data[1], data[0]};
 }
 
 void SRAMFile::setWeaponLevel(enum sf_weapon      weapon,
