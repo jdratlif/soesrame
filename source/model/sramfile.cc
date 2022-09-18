@@ -323,7 +323,7 @@ quint32 SRAMFile::getExperience(enum sf_hero hero) const {
 
 void SRAMFile::setExperience(enum sf_hero hero, quint32 experience) {
     Q_ASSERT(isValid(getGame()));
-    Q_ASSERT((experience >= 0) && (experience < 16777216));
+    Q_ASSERT(experience < 16777216);
 
     unsigned char *data = offset
                           + ((hero == SF_BOY) ? SRAM_BOY_EXPERIENCE_OFFSET
@@ -420,7 +420,7 @@ quint32 SRAMFile::getMoney(enum sf_money money) const {
 
 void SRAMFile::setMoney(enum sf_money money, quint32 count) {
     Q_ASSERT(isValid(getGame()));
-    Q_ASSERT((count >= 0) && (count < 16777216));
+    Q_ASSERT(count < 16777216);
 
     unsigned char *data = offset + SRAM_MONEY_OFFSET + (money * 3);
 
