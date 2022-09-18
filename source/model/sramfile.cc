@@ -274,14 +274,14 @@ void SRAMFile::setCharm(enum sf_charm charm, bool have) {
 }
 
 auto SRAMFile::getChecksum(int game) const -> quint16 {
-    const quint16 *data = reinterpret_cast<const quint16 *>(
+    const auto *data = reinterpret_cast<const quint16 *>(
         sram + SRAM_GAME_OFFSET + game * SRAM_GAME_SIZE + SRAM_CHECKSUM_OFFSET);
 
     return qFromLittleEndian(*data);
 }
 
 void SRAMFile::setChecksum(int game, quint16 checksum) {
-    quint16 *data = reinterpret_cast<quint16 *>(
+    auto *data = reinterpret_cast<quint16 *>(
         sram + SRAM_GAME_OFFSET + game * SRAM_GAME_SIZE + SRAM_CHECKSUM_OFFSET);
 
     *data = qToLittleEndian(checksum);
@@ -290,7 +290,7 @@ void SRAMFile::setChecksum(int game, quint16 checksum) {
 auto SRAMFile::getCurrentHP(enum sf_hero hero) const -> quint16 {
     Q_ASSERT(isValid(getGame()));
 
-    const quint16 *data = reinterpret_cast<const quint16 *>(
+    const auto *data = reinterpret_cast<const quint16 *>(
         offset
         + ((hero == SF_BOY) ? SRAM_BOY_CURRENTHP_OFFSET
                             : SRAM_DOG_CURRENTHP_OFFSET));
@@ -302,7 +302,7 @@ void SRAMFile::setCurrentHP(enum sf_hero hero, quint16 hp) {
     Q_ASSERT(isValid(getGame()));
     Q_ASSERT(hp < 1000);
 
-    quint16 *data = reinterpret_cast<quint16 *>(
+    auto *data = reinterpret_cast<quint16 *>(
         offset
         + ((hero == SF_BOY) ? SRAM_BOY_CURRENTHP_OFFSET
                             : SRAM_DOG_CURRENTHP_OFFSET));
@@ -314,7 +314,7 @@ void SRAMFile::setCurrentHP(enum sf_hero hero, quint16 hp) {
 auto SRAMFile::getExperience(enum sf_hero hero) const -> quint32 {
     Q_ASSERT(isValid(getGame()));
 
-    const quint32 *data = reinterpret_cast<const quint32 *>(
+    const auto *data = reinterpret_cast<const quint32 *>(
         offset
         + ((hero == SF_BOY) ? SRAM_BOY_EXPERIENCE_OFFSET
                             : SRAM_DOG_EXPERIENCE_OFFSET));
@@ -391,7 +391,7 @@ void SRAMFile::setLevel(enum sf_hero hero, int level) {
 auto SRAMFile::getMaxHP(enum sf_hero hero) const -> quint16 {
     Q_ASSERT(isValid(getGame()));
 
-    const quint16 *data = reinterpret_cast<const quint16 *>(
+    const auto *data = reinterpret_cast<const quint16 *>(
         offset
         + ((hero == SF_BOY) ? SRAM_BOY_MAXHP_OFFSET : SRAM_DOG_MAXHP_OFFSET));
 
@@ -402,7 +402,7 @@ void SRAMFile::setMaxHP(enum sf_hero hero, quint16 hp) {
     Q_ASSERT(isValid(getGame()));
     Q_ASSERT(hp < 1000);
 
-    quint16 *data = reinterpret_cast<quint16 *>(
+    auto *data = reinterpret_cast<quint16 *>(
         offset
         + ((hero == SF_BOY) ? SRAM_BOY_MAXHP_OFFSET : SRAM_DOG_MAXHP_OFFSET));
 
@@ -413,7 +413,7 @@ void SRAMFile::setMaxHP(enum sf_hero hero, quint16 hp) {
 auto SRAMFile::getMoney(enum sf_money money) const -> quint32 {
     Q_ASSERT(isValid(getGame()));
 
-    const quint32 *data = reinterpret_cast<const quint32 *>(
+    const auto *data = reinterpret_cast<const quint32 *>(
         offset + SRAM_MONEY_OFFSET + (money * 3));
 
     return (qFromLittleEndian(*data) & 0xFFFFFF);
@@ -486,7 +486,7 @@ void SRAMFile::setName(enum sf_hero hero, const QString &name) {
 auto SRAMFile::getTradeGood(enum sf_tradegood tradegood) const -> quint16 {
     Q_ASSERT(isValid(getGame()));
 
-    const quint16 *data =
+    const auto *data =
         reinterpret_cast<const quint16 *>(offset + SRAM_TRADEGOODS_OFFSET);
 
     return qFromLittleEndian(data[tradegood]);
@@ -496,8 +496,7 @@ void SRAMFile::setTradeGood(enum sf_tradegood tradegood, quint16 count) {
     Q_ASSERT(isValid(getGame()));
     Q_ASSERT(count < 100);
 
-    quint16 *data =
-        reinterpret_cast<quint16 *>(offset + SRAM_TRADEGOODS_OFFSET);
+    auto *data = reinterpret_cast<quint16 *>(offset + SRAM_TRADEGOODS_OFFSET);
 
     data[tradegood] = qToLittleEndian(count);
     modified        = true;

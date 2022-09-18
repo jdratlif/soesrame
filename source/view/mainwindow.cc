@@ -49,14 +49,14 @@ MainWindow::MainWindow()
     connect(this, SIGNAL(uiChanged()), this, SLOT(onUIChanged()));
 
     // make Game menu actions exclusive
-    QActionGroup *gameActionGroup = new QActionGroup(this);
+    auto *gameActionGroup = new QActionGroup(this);
     gameActionGroup->addAction(ui.gameGame1);
     gameActionGroup->addAction(ui.gameGame2);
     gameActionGroup->addAction(ui.gameGame3);
     gameActionGroup->addAction(ui.gameGame4);
     gameActionGroup->setExclusive(true);
 
-    QActionGroup *regionActionGroup = new QActionGroup(this);
+    auto *regionActionGroup = new QActionGroup(this);
     regionActionGroup->addAction(ui.regionUnitedStates);
     regionActionGroup->addAction(ui.regionEngland);
     regionActionGroup->addAction(ui.regionFrance);
@@ -98,12 +98,12 @@ MainWindow::MainWindow()
     }
 
     // setup validators
-    QIntValidator *under6Validator      = new QIntValidator(0, 6, this);
-    QIntValidator *under100Validator    = new QIntValidator(0, 99, this);
-    QIntValidator *under1000Validator   = new QIntValidator(0, 999, this);
-    QIntValidator *any24BitValidator    = new QIntValidator(0, 16777215, this);
-    QIntValidator *levelValidator       = new QIntValidator(1, 99, this);
-    QIntValidator *weaponLevelValidator = new QIntValidator(0, 255, this);
+    auto *under6Validator      = new QIntValidator(0, 6, this);
+    auto *under100Validator    = new QIntValidator(0, 99, this);
+    auto *under1000Validator   = new QIntValidator(0, 999, this);
+    auto *any24BitValidator    = new QIntValidator(0, 16777215, this);
+    auto *levelValidator       = new QIntValidator(1, 99, this);
+    auto *weaponLevelValidator = new QIntValidator(0, 255, this);
 
     // money validators
     ui.talonsText->setValidator(any24BitValidator);
