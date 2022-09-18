@@ -19,10 +19,7 @@
  * along with Secret of Evermore SRAM Editor; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
- 
-// $Id: invalidsramfileexception.cc,v 1.3 2008/01/23 17:30:33 technoplaza Exp $
 
 #include "exceptions/invalidsramfileexception.hh"
 
 using namespace soesrame;
-

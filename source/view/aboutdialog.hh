@@ -19,8 +19,6 @@
  * along with Secret of Evermore SRAM Editor; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
- 
-// $Id: aboutdialog.hh,v 1.3 2008/12/18 05:54:28 jdratlif Exp $
 
 #ifndef SOESRAME_ABOUTDIALOG_HH_
 #define SOESRAME_ABOUTDIALOG_HH_
@@ -31,11 +29,11 @@ namespace soesrame {
     /// custom about dialog to display credits and copyright
     class AboutDialog : public QDialog {
         Q_OBJECT
-        
-    private:
+
+      private:
         Ui::AboutDialog ui;
-        
-    public:
+
+      public:
         /**
          * Creates a new AboutDialog.
          *
@@ -43,7 +41,6 @@ namespace soesrame {
          */
         AboutDialog(QWidget *parent);
     };
-}
+}  // namespace soesrame
 
 #endif
-

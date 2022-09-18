@@ -19,8 +19,6 @@
  * along with Secret of Evermore SRAM Editor; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
- 
-// $Id: soesrame.cc,v 1.23 2008/12/18 05:54:28 jdratlif Exp $
 
 #include <QApplication>
 #include <QTranslator>
@@ -31,17 +29,17 @@ using namespace soesrame;
 
 int main(int argc, char **argv) {
     QApplication app(argc, argv);
-    QTranslator appTranslator, qtTranslator;
-    
-    appTranslator.load("soesrame_" + QLocale::system().name(), ":/translations");
+    QTranslator  appTranslator, qtTranslator;
+
+    appTranslator.load("soesrame_" + QLocale::system().name(),
+                       ":/translations");
     qtTranslator.load("qt_" + QLocale::system().name(), ":/translations");
-    
+
     app.installTranslator(&appTranslator);
     app.installTranslator(&qtTranslator);
-    
+
     MainWindow window;
     window.show();
-    
+
     return app.exec();
 }
-

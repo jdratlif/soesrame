@@ -19,8 +19,6 @@
  * along with Secret of Evermore SRAM Editor; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
- 
-// $Id: invalidsramfileexception.hh,v 1.6 2008/01/24 01:18:03 technoplaza Exp $
 
 #ifndef SOESRAME_INVALIDSRAMFILEEXCEPTION_HH_
 #define SOESRAME_INVALIDSRAMFILEEXCEPTION_HH_
@@ -30,25 +28,23 @@
 /// namespace used by all soesrame classes and constants
 namespace soesrame {
     /// The possible InvalidSRAMFileException error codes
-    enum isfe_error {
-        ISFE_FILENOTFOUND, ISFE_INVALIDSIZE, ISFE_NOVALIDGAMES
-    };
-    
+    enum isfe_error { ISFE_FILENOTFOUND, ISFE_INVALIDSIZE, ISFE_NOVALIDGAMES };
+
     /**
      * Exception thrown when a file is not a valid SRAM file.
      */
     class InvalidSRAMFileException : public std::runtime_error {
-    private:
+      private:
         enum isfe_error error;
-        
-    public:
+
+      public:
         /**
          * Creates a new InvalidSRAMFileException.
          *
          * @param error The error code that triggered this exception.
          */
         InvalidSRAMFileException(enum isfe_error error);
-        
+
         /**
          * Gets the error code for this InvalidSRAMFileException.
          *
@@ -56,14 +52,14 @@ namespace soesrame {
          */
         enum isfe_error getError() const;
     };
-    
-    inline InvalidSRAMFileException::
-        InvalidSRAMFileException(enum isfe_error error) :
-        std::runtime_error("InvalidSRAMFileException"), error(error) {}
-        
-    inline enum isfe_error InvalidSRAMFileException::getError() const
-        { return error; }
-}
+
+    inline InvalidSRAMFileException::InvalidSRAMFileException(
+        enum isfe_error error)
+        : std::runtime_error("InvalidSRAMFileException"), error(error) {}
+
+    inline enum isfe_error InvalidSRAMFileException::getError() const {
+        return error;
+    }
+}  // namespace soesrame
 
 #endif
-
