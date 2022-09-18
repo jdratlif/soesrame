@@ -477,7 +477,7 @@ void SRAMFile::setName(enum sf_hero hero, const QString &name) {
         temp.replace(QChar(0xF1), QChar(0xD7));  // fix n tilde
     }
 
-    std::strcpy(data, temp.left(15).toLatin1().data());
+    std::strncpy(data, temp.left(15).toLatin1().data(), 15);
 
     modified = true;
 }
