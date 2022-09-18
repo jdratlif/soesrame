@@ -405,20 +405,20 @@ void MainWindow::setRegion(enum sf_region region) {
     switch (region) {
         case REGION_GERMANY:
             validator = new QRegExpValidator(
-                QRegExp("[A-Za-z1-3,\\.!'\\-&# "
-                        "\\x00C4\\x00D6\\x00DC\\x00DF\\x00E4\\x00F6\\x00FC]*"),
+                QRegExp(
+                    R"([A-Za-z1-3,\.!'\-&# \x00C4\x00D6\x00DC\x00DF\x00E4\x00F6\x00FC]*)"),
                 this);
             break;
 
         case REGION_SPAIN:
             validator = new QRegExpValidator(
-                QRegExp("[A-Za-z0-9,\\.!'\\-& \\x00F1]*"), this);
+                QRegExp(R"([A-Za-z0-9,\.!'\-& \x00F1]*)"), this);
             break;
 
         default:
             // US/UK English and French use the same alphabet for names
-            validator =
-                new QRegExpValidator(QRegExp("[A-Za-z0-9,\\.!'\\-&# ]*"), this);
+            validator = new QRegExpValidator(
+                QRegExp(R"([A-Za-z0-9,\.!'\-&# ]*)"), this);
     }
 
     ui.boyNameText->setValidator(validator);
