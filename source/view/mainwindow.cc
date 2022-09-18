@@ -39,7 +39,7 @@
 using namespace soesrame;
 
 MainWindow::MainWindow()
-    : QMainWindow(), aboutDialog(0), ignoreSignals(false), open(false) {
+    : QMainWindow(), aboutDialog(nullptr), ignoreSignals(false), open(false) {
     // setup widgets
     ui.setupUi(this);
 
