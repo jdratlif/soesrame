@@ -109,8 +109,7 @@ const std::pair<int, int> SRAMFile::SRAM_WEAPON_OFFSETS[] = {
     std::pair<int, int>(0x27A, 0x20)  // bazooka
 };
 
-SRAMFile::SRAMFile(const QString &filename,
-                   enum sf_region region) throw(InvalidSRAMFileException)
+SRAMFile::SRAMFile(const QString &filename, enum sf_region region)
     : region(region), modified(false) {
     std::ifstream file(filename.toLatin1().data(),
                        std::ios_base::in | std::ios_base::binary);

@@ -343,8 +343,7 @@ namespace soesrame {
          * @throws InvalidSRAMFileException if the file is not a valid Secret of
          *         Evermore SRAM file.
          */
-        SRAMFile(const QString &filename,
-                 enum sf_region region) throw(InvalidSRAMFileException);
+        SRAMFile(const QString &filename, enum sf_region region);
 
         /**
          * Saves this SRAMFile back to disk.
